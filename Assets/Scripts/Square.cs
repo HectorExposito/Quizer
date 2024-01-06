@@ -9,6 +9,11 @@ public class Square : MonoBehaviour
     [SerializeField] private SquareType squareType;
     [SerializeField] private QuestionCategory questionCategory;
     [SerializeField] private BaseColor baseColor;
+    GameManager gm;
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
     public enum SquareType
     {
         BASE,QUESTION,SHOP
@@ -31,7 +36,7 @@ public class Square : MonoBehaviour
                 Debug.Log("Estas en la base " + baseColor.ToString());
                 break;
             case SquareType.QUESTION:
-                Debug.Log("Pregunta de "+ questionCategory.ToString());
+                gm.AskQuestion(questionCategory);
                 break;
             case SquareType.SHOP:
                 Debug.Log("Tienda");
