@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] private Sprite[] sprites;
-    [SerializeField] private const int NUMBER_OF_CHANGES=10;
-    private int actualChangesLeft;
-    private int lastPosition=0;
-    private int position = 0;
+    [SerializeField] private Sprite[] sprites;//All the sprites with the different numbers of the dice
+    [SerializeField] private const int NUMBER_OF_CHANGES=10;//Changes that the dice will do before showing the final result
+    private int actualChangesLeft;//Number of changes left 
+    private int lastPosition=0;//Saves the last number that was shown by the dice in order to not repeat it
+    private int position = 0;//Saves the position of the number that is going to be shown
 
     private void Start()
     {
@@ -19,15 +19,19 @@ public class Dice : MonoBehaviour
         StartCoroutine(DiceAnimationCoroutine(number));
     }
 
+    //It changes the sprite of the dice to give the impression of a dice rolling
     IEnumerator DiceAnimationCoroutine(int number)
     {
+        //It selects a random position until its different to the last one used
         do
         {
             position = Random.Range(0, sprites.Length);
         } while (lastPosition == position);
+
         lastPosition = position;
         actualChangesLeft--;
         yield return new WaitForSeconds(0.2f);
+        //If there is no changes left, it shows the real number
         if (actualChangesLeft != 0)
         {
             GetComponent<SpriteRenderer>().sprite = sprites[lastPosition];
