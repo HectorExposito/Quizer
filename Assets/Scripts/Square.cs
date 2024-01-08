@@ -33,13 +33,14 @@ public class Square : MonoBehaviour
         switch (squareType)
         {
             case SquareType.BASE:
-                Debug.Log("Estas en la base " + baseColor.ToString());
+                gm.Base();
                 break;
             case SquareType.QUESTION:
                 gm.AskQuestion(questionCategory);
                 break;
             case SquareType.SHOP:
-                Debug.Log("Tienda");
+                Debug.Log("TIENDA");
+                gm.Shop();
                 break;
         }
     }

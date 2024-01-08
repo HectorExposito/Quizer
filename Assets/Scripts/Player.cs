@@ -14,7 +14,12 @@ public class Player : MonoBehaviour
     [SerializeField]private float movementDuration;//Time the player takes to move from the actual square to the next
     private bool isMoving;//Tells if the player is currently moving or not
     private bool waitingForDiceAnimation;//Tells if the player is waiting for the dice animation to end
+    private bool alreadyFinish;//Tells if the player has finished the game
+    private bool canThrowDice;//Tells if the player can throw the dice
     [SerializeField] private Dice dice;
+    private int savedMoney;
+    private int cash;
+    [SerializeField] private PlayerUI playerUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +27,23 @@ public class Player : MonoBehaviour
         playerCollider = GetComponent<Collider2D>();
         transform.position = playerBase.gameObject.transform.position;
         nextSquare = playerBase.GetNextSquare();
-        Debug.Log(nextSquare.gameObject.transform.position);
+        alreadyFinish = false;
+        canThrowDice = false;
+        savedMoney = 200;
+        cash = 0;
+        playerUI.UpdateCashText(cash);
+        playerUI.UpdateSavedMoneyText(savedMoney);
     }
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
-        movement = Random.Range(1,MAX_MOVEMENT);
+        //movement = Random.Range(1, MAX_MOVEMENT);
+        movement = 2;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         MovePlayer();
     }
+
     //Moves the player
     private void MovePlayer()
     {
@@ -73,12 +85,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool GetAlreadyFinish()
     {
-        if (Input.GetKeyDown(KeyCode.Space)&&!isMoving)
+        return alreadyFinish;
+    }
+
+    public void ReceiveMoney(int money)
+    {
+        cash += money;
+        playerUI.UpdateCashText(cash);
+    }
+
+    public  bool CheckIfItIsOnItsBase()
+    {
+        if (actualSquare.GetBaseColor() == playerBase.GetBaseColor())
         {
-            ThrowDice();
+            return true;
         }
+        return false;
+    }
+
+    public void SaveMoney()
+    {
+        savedMoney += cash;
+        cash = 0;
+        playerUI.UpdateCashText(cash);
+        playerUI.UpdateSavedMoneyText(savedMoney);
     }
 }
