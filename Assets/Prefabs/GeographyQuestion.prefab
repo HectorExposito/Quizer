@@ -49,10 +49,10 @@ BoxCollider2D:
   m_Offset: {x: 0.0027068257, y: 0.004060313}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.16, y: 0.96}
+    newSize: {x: 1.16, y: 0.96}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -71,3 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599b616e602052940a63fc02a779330a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSquare: {fileID: 0}
+  squareType: 0
+  questionCategory: 0
+  baseColor: 0

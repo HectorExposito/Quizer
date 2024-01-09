@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,12 @@ public class Player : MonoBehaviour
     private int savedMoney;
     private int cash;
     [SerializeField] private PlayerUI playerUI;
+    private Item[] itemsOnBase;
+    private List<Item> itemsOnInventory;
+    public enum Item
+    {
+        HISTORY, SPORTS, SCIENCE, ART, GEOGRAPHY, ENTERTAINMENT
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +40,14 @@ public class Player : MonoBehaviour
         cash = 0;
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
+        itemsOnBase = new Item[6];
+        itemsOnInventory = new List<Item>();
     }
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
         //movement = Random.Range(1, MAX_MOVEMENT);
-        movement = 2;
+        movement = 4;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         MovePlayer();
@@ -111,5 +120,29 @@ public class Player : MonoBehaviour
         cash = 0;
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
+    }
+
+    internal int GetTotalMoney()
+    {
+        return cash + savedMoney;
+    }
+
+    internal void BuyItem(Item item)
+    {
+        itemsOnInventory.Add(item);
+        int moneyToPay = 200;
+        if (cash>=200)
+        {
+            cash -= 200;
+        }
+        else
+        {
+            cash = 0;
+            moneyToPay -= cash;
+            savedMoney -= moneyToPay;
+        }
+        playerUI.UpdateCashText(cash);
+        playerUI.UpdateSavedMoneyText(savedMoney);
+        playerUI.UpdateItemList(itemsOnInventory);
     }
 }

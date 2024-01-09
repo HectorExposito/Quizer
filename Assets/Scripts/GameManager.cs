@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
     private bool diceThrown;
     private bool actionFinished;
     private bool playerFailedQuestion;
+    private bool questionForBuyingItem;
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
+    [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject noMoneyPanel;
+    private int canBuyItem;
     // Start is called before the first frame update
     void Start()
     {
@@ -238,10 +242,23 @@ public class GameManager : MonoBehaviour
         if (buttonPosition != positionOfCorrectAnswer)
         {
             playerFailedQuestion = true;
+            if (questionForBuyingItem)
+            {
+                questionForBuyingItem = false;
+                canBuyItem = -1;
+            }
         }
         else
         {
-            currentPlayer.ReceiveMoney(MONEY_FOR_CORRECT_ANSWER);
+            if (questionForBuyingItem)
+            {
+                questionForBuyingItem = false;
+                canBuyItem = 1;
+            }
+            else
+            {
+                currentPlayer.ReceiveMoney(MONEY_FOR_CORRECT_ANSWER);
+            }
         }
         timeBar.StopTime();
         ActionFinished();
@@ -272,16 +289,115 @@ public class GameManager : MonoBehaviour
 
     public void Shop()
     {
+        if (currentPlayer.GetTotalMoney() >= 200)
+        {
+            shopPanel.SetActive(true);
+        }
+        else
+        {
+            StartCoroutine(ShowNoMoneyPanel());
+        }
+    }
+
+    IEnumerator ShowNoMoneyPanel()
+    {
+        noMoneyPanel.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        noMoneyPanel.SetActive(false);
+        ActionFinished();
+    }
+    public void BuyItem(int item)
+    {
+        StartCoroutine(BuyItemCoroutine(item));
+    }
+    public IEnumerator BuyItemCoroutine(int item)
+    {
+        canBuyItem = 0;
+        questionForBuyingItem = true;
+        shopPanel.SetActive(false);
+        switch (item)
+        {
+            case 0:
+                AskQuestion(Square.QuestionCategory.SPORTS);
+                while (canBuyItem==0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                Debug.Log("cabuyitem "+canBuyItem);
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.SPORTS);
+                }
+                break;
+            case 1:
+                AskQuestion(Square.QuestionCategory.ART);
+                while (canBuyItem == 0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.ART);
+                }
+                break;
+            case 2:
+                AskQuestion(Square.QuestionCategory.HISTORY);
+                while (canBuyItem == 0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.HISTORY);
+                }
+                break;
+            case 3:
+                AskQuestion(Square.QuestionCategory.ENTERTAINMENT);
+                while (canBuyItem == 0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.ENTERTAINMENT);
+                }
+                break;
+            case 4:
+                AskQuestion(Square.QuestionCategory.SCIENCE);
+                while (canBuyItem == 0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.SCIENCE);
+                }
+                break;
+            case 5:
+                AskQuestion(Square.QuestionCategory.GEOGRAPHY);
+                while (canBuyItem == 0)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                if (canBuyItem == 1)
+                {
+                    currentPlayer.BuyItem(Player.Item.GEOGRAPHY);
+                }
+                break;
+        }
+        canBuyItem = 0;
+        
         ActionFinished();
     }
 
+    public void ThrowDice()
+    {
+        Debug.Log("Tirar dado");
+        diceThrown = true;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Tirar dado");
-            diceThrown=true;
-        }
+        
     }
 }
