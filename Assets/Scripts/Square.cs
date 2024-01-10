@@ -9,10 +9,12 @@ public class Square : MonoBehaviour
     [SerializeField] private SquareType squareType;
     [SerializeField] private QuestionCategory questionCategory;
     [SerializeField] private BaseColor baseColor;
+    [SerializeField] private List<Player> playersOnSquare;
     GameManager gm;
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        playersOnSquare = new List<Player>();
     }
     public enum SquareType
     {
@@ -65,5 +67,18 @@ public class Square : MonoBehaviour
         return baseColor;
     }
 
+    public void AddPlayer(Player player)
+    {
+        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
+        playersOnSquare.Add(player);
+        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
+    }
+
+    public void RemovePlayer(Player player)
+    {
+        Debug.Log("jugadores en casilla "+playersOnSquare.Count);
+        playersOnSquare.Remove(player);
+        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
+    }
     
 }

@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         movement = 0;
         playerCollider = GetComponent<Collider2D>();
         transform.position = playerBase.gameObject.transform.position;
+        actualSquare = playerBase;
         nextSquare = playerBase.GetNextSquare();
         alreadyFinish = false;
         canThrowDice = false;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         playerUI.UpdateSavedMoneyText(savedMoney);
         itemsOnBase = new Item[6];
         itemsOnInventory = new List<Item>();
+        actualSquare.AddPlayer(this);
     }
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
         movement = 4;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
+        actualSquare.RemovePlayer(this);
         MovePlayer();
     }
 
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour
         else
         {
             isMoving = false;
+            actualSquare.AddPlayer(this);
             actualSquare.SquareAction();
         }
     }
@@ -144,5 +148,6 @@ public class Player : MonoBehaviour
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
         playerUI.UpdateItemList(itemsOnInventory);
+        playerUI.UpdateInventoryImages(itemsOnInventory);
     }
 }
