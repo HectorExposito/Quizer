@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
+    [SerializeField] private GameObject ChooseRivalPanel;
+    [SerializeField] private Button[] chooseRivalButtons;
+
     private int canBuyItem;
     // Start is called before the first frame update
     void Start()
@@ -61,15 +64,13 @@ public class GameManager : MonoBehaviour
                 Debug.Log(diceThrown);
                 yield return new WaitForSeconds(0.1f);
             }
-            Debug.Log("sale primer bucle");
+
             currentPlayer.ThrowDice();
-            Debug.Log("tira dado");
+
             while (!actionFinished)
             {
-                Debug.Log("dentro segundo bucle");
                 yield return new WaitForSeconds(0.1f);
             }
-            Debug.Log("pregunta "+playerFailedQuestion);
 
             diceThrown = false;
             actionFinished = false;
@@ -200,6 +201,40 @@ public class GameManager : MonoBehaviour
         timeBar.StartTime(this);
     }
 
+    internal void Duel(List<Player> playersOnSquare)
+    {
+        Player playerToCompete = null;
+        if (playersOnSquare.Count == 2)
+        {
+            if (playersOnSquare[0] == currentPlayer)
+            {
+                playerToCompete = playersOnSquare[1];
+            }
+            else
+            {
+                playerToCompete = playersOnSquare[0];
+            }
+        }
+        else
+        {
+            SetChooseRivalsButtons(playersOnSquare);
+            ChooseRivalPanel.SetActive(true);
+        }
+    }
+
+    private void SetChooseRivalsButtons(List<Player> playersOnSquare)
+    {
+        int i = 0;
+        if (playersOnSquare.Count==3)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+
     //It sets the components of the question panel
     private void SetQuestionPanel(Question questionToAsk)
     {
@@ -282,7 +317,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer.CheckIfItIsOnItsBase())
         {
-            currentPlayer.SaveMoney();
+            currentPlayer.BaseAction();
         }
         ActionFinished();
     }

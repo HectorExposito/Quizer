@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     private List<Item> itemsOnInventory;
     public enum Item
     {
-        HISTORY, SPORTS, SCIENCE, ART, GEOGRAPHY, ENTERTAINMENT
+        HISTORY, SPORTS, SCIENCE, ART, GEOGRAPHY, ENTERTAINMENT,NONE
     }
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
         itemsOnBase = new Item[6];
+        for (int i = 0; i < itemsOnBase.Length; i++)
+        {
+            itemsOnBase[i] = Item.NONE;
+        }
         itemsOnInventory = new List<Item>();
         actualSquare.AddPlayer(this);
     }
@@ -118,7 +122,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void SaveMoney()
+    private void SaveMoney()
     {
         savedMoney += cash;
         cash = 0;
@@ -147,7 +151,42 @@ public class Player : MonoBehaviour
         }
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
-        playerUI.UpdateItemList(itemsOnInventory);
+        playerUI.UpdateInventoryImages(itemsOnInventory);
+    }
+
+    public void BaseAction()
+    {
+        SaveMoney();
+        SaveItems();
+    }
+
+    private void SaveItems()
+    {
+        foreach (Item item in itemsOnInventory)
+        {
+            switch (item)
+            {
+                case Item.SPORTS:
+                    itemsOnBase[0] = item;
+                    break;
+                case Item.ART:
+                    itemsOnBase[1] = item;
+                    break;
+                case Item.HISTORY:
+                    itemsOnBase[2] = item;
+                    break;
+                case Item.ENTERTAINMENT:
+                    itemsOnBase[3] = item;
+                    break;
+                case Item.SCIENCE:
+                    itemsOnBase[4] = item;
+                    break;
+                case Item.GEOGRAPHY:
+                    itemsOnBase[5] = item;
+                    break;
+            }
+        }
+        playerUI.UpdateItemList(itemsOnBase);
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
 }

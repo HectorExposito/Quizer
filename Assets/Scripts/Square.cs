@@ -38,7 +38,15 @@ public class Square : MonoBehaviour
                 gm.Base();
                 break;
             case SquareType.QUESTION:
-                gm.AskQuestion(questionCategory);
+                if (playersOnSquare.Count == 1)
+                {
+                    gm.AskQuestion(questionCategory);
+                }
+                else
+                {
+                    gm.Duel(playersOnSquare);
+                }
+                
                 break;
             case SquareType.SHOP:
                 Debug.Log("TIENDA");

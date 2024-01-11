@@ -25,11 +25,11 @@ public class PlayerUI : MonoBehaviour
         savedMoneyText.text = savedMoney + " $";
     }
 
-    internal void UpdateItemList(List<Player.Item> itemsOnInventory)
+    internal void UpdateItemList(Player.Item[] itemsOnBase)
     {
-        foreach (Player.Item item in itemsOnInventory)
+        for (int i = 0; i < itemsOnBase.Length; i++)
         {
-            switch (item)
+            switch (itemsOnBase[i])
             {
                 case Player.Item.SPORTS:
                     itemImages[0].SetActive(true);
