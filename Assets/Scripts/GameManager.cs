@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private FileManager fm;
+    [SerializeField] private AudioPlayer audioPlayer;
     private List<Question>[] questions;//0->historia 1->deporte 2->ciencias 3->geografia 4->arte 5->entretenimiento
 
     private int positionOfCorrectAnswer;
@@ -21,8 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeBeforeClosingPanel;
 
     //Players
-    [SerializeField] private Player[] allPlayers;
-    [SerializeField] private Player[] playersPlaying;
+    [SerializeField] private Player[] allPlayers;//0->yellow 1->red 2->green 3->blue
+    private Player[] playersPlaying;
+    [SerializeField] private GameObject[] playersUIPanels;//0->yellow 1->red 2->green 3->blue
     private Player currentPlayer;
 
     //Game
@@ -37,6 +39,90 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button[] chooseRivalButtons;
 
     private int canBuyItem;
+
+    private void Awake()
+    {
+        SetPlayersPlaying();
+    }
+
+    private void SetPlayersPlaying()
+    {
+        int numberOfPlayers = 0;
+        if (PlayerPrefs.GetInt("yellow") < 10)
+        {
+            numberOfPlayers++;
+        }
+        if (PlayerPrefs.GetInt("red") < 10)
+        {
+            numberOfPlayers++;
+        }
+        if (PlayerPrefs.GetInt("blue") < 10)
+        {
+            numberOfPlayers++;
+        }
+        if (PlayerPrefs.GetInt("green") < 10)
+        {
+            numberOfPlayers++;
+        }
+
+        playersPlaying = new Player[numberOfPlayers];
+
+        ActivatePlayeres();
+    }
+
+    private void ActivatePlayeres()
+    {
+        int num = 0;
+
+        if (PlayerPrefs.GetInt("yellow") < 10)
+        {
+            playersPlaying[num] = allPlayers[0];
+            allPlayers[0].SetSprite(PlayerPrefs.GetInt("yellow"));
+            num++;
+        }
+        else
+        {
+            allPlayers[0].gameObject.SetActive(false);
+            playersUIPanels[0].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("red") < 10)
+        {
+            playersPlaying[num] = allPlayers[1];
+            allPlayers[1].SetSprite(PlayerPrefs.GetInt("red"));
+            num++;
+        }
+        else
+        {
+            allPlayers[1].gameObject.SetActive(false);
+            playersUIPanels[1].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("green") < 10)
+        {
+            playersPlaying[num] = allPlayers[2];
+            allPlayers[2].SetSprite(PlayerPrefs.GetInt("green"));
+            num++;
+        }
+        else
+        {
+            allPlayers[2].gameObject.SetActive(false);
+            playersUIPanels[2].SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("blue") < 10)
+        {
+            playersPlaying[num] = allPlayers[3];
+            allPlayers[3].SetSprite(PlayerPrefs.GetInt("blue"));
+            num++;
+        }
+        else
+        {
+            allPlayers[3].gameObject.SetActive(false);
+            playersUIPanels[3].SetActive(false);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +147,6 @@ public class GameManager : MonoBehaviour
             currentPlayer = playersPlaying[playerTurn];
             while (!diceThrown)
             {
-                Debug.Log(diceThrown);
                 yield return new WaitForSeconds(0.1f);
             }
 
@@ -160,6 +245,7 @@ public class GameManager : MonoBehaviour
     //It selects the question to ask according to the category it receives and then it asks it to the player
     public void AskQuestion(Square.QuestionCategory questionCategory)
     {
+        audioPlayer.PlayQuestionMusic();
         Question questionToAsk=null;
         int num;
         //It selects a random question from the array
@@ -282,9 +368,11 @@ public class GameManager : MonoBehaviour
                 questionForBuyingItem = false;
                 canBuyItem = -1;
             }
+            audioPlayer.PlayWrongAnswerMusic();
         }
         else
         {
+            audioPlayer.PlayRightAnswerMusic();
             if (questionForBuyingItem)
             {
                 questionForBuyingItem = false;
@@ -305,6 +393,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeBeforeClosingPanel);
         questionsPanel.SetActive(false);
+        audioPlayer.PlayGameMusic();
     }
 
     private void ActionFinished()
@@ -317,6 +406,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer.CheckIfItIsOnItsBase())
         {
+            audioPlayer.PlayBaseSound();
             currentPlayer.BaseAction();
         }
         ActionFinished();
@@ -327,6 +417,7 @@ public class GameManager : MonoBehaviour
         if (currentPlayer.GetTotalMoney() >= 200)
         {
             shopPanel.SetActive(true);
+            StartCoroutine(ShopCoroutine());
         }
         else
         {
@@ -334,6 +425,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator ShopCoroutine()
+    {
+        yield return new WaitForSeconds(15f);
+        shopPanel.SetActive(false);
+        ActionFinished();
+    }
     IEnumerator ShowNoMoneyPanel()
     {
         noMoneyPanel.SetActive(true);
@@ -343,6 +440,7 @@ public class GameManager : MonoBehaviour
     }
     public void BuyItem(int item)
     {
+        StopCoroutine(ShopCoroutine());
         StartCoroutine(BuyItemCoroutine(item));
     }
     public IEnumerator BuyItemCoroutine(int item)

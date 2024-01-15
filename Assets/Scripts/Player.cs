@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerUI playerUI;
     private Item[] itemsOnBase;
     private List<Item> itemsOnInventory;
+    [SerializeField] private Sprite[] sprites;
     public enum Item
     {
         HISTORY, SPORTS, SCIENCE, ART, GEOGRAPHY, ENTERTAINMENT,NONE
@@ -52,12 +53,16 @@ public class Player : MonoBehaviour
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
-        //movement = Random.Range(1, MAX_MOVEMENT);
-        movement = 4;
+        movement = Random.Range(1, MAX_MOVEMENT);
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         actualSquare.RemovePlayer(this);
         MovePlayer();
+    }
+
+    internal void SetSprite(int num)
+    {
+        GetComponent<SpriteRenderer>().sprite = sprites[num];
     }
 
     //Moves the player
@@ -189,4 +194,5 @@ public class Player : MonoBehaviour
         playerUI.UpdateItemList(itemsOnBase);
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
+
 }
