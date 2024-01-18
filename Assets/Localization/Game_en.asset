@@ -23,7 +23,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 377175883776
-    m_Localized: YOU NEED AT LEAST 200$ TO PURCHASE AN ITEM.
+    m_Localized: YOU NEED TO HAVE FREE SPACE ON YOUR INVENTORY AND AT LEAST 200$
+      TO PURCHASE AN ITEM.
     m_Metadata:
       m_Items: []
   - m_Id: 915439304704

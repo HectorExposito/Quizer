@@ -31,6 +31,16 @@ public class AudioPlayer : MonoBehaviour
         }
         
     }
+
+    public void SetMusicVolume()
+    {
+        musicAudioSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+    }
+
+    public void SetFXVolume()
+    {
+        fxAudioSource.volume = PlayerPrefs.GetFloat("FxVolume");
+    }
     private void PlaySound(AudioSource audioSource, AudioClip audio, bool loop)
     {
         audioSource.clip = audio;

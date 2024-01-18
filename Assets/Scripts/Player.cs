@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     public void ThrowDice()
     {
         movement = Random.Range(1, MAX_MOVEMENT);
+        //movement = 4;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         actualSquare.RemovePlayer(this);
@@ -191,8 +192,18 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+        itemsOnInventory.Clear();
         playerUI.UpdateItemList(itemsOnBase);
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
 
+    public int GetCash()
+    {
+        return cash;
+    }
+
+    public List<Item> GetInventory()
+    {
+        return itemsOnInventory;
+    }
 }

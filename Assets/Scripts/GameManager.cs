@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private bool actionFinished;
     private bool playerFailedQuestion;
     private bool questionForBuyingItem;
+    private bool playerToCompeteChosen;
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
@@ -208,7 +209,7 @@ public class GameManager : MonoBehaviour
             string[] wrongAnswers = new string[3];
             for (int i = 3; i < q.Length; i++)
             {
-                Debug.Log(q[i]);
+                //Debug.Log(q[1]+" "+q[i]);
                 wrongAnswers[i - 3] = q[i];
             }
             question = new Question(q[0], q[1], q[2],wrongAnswers);
@@ -222,21 +223,27 @@ public class GameManager : MonoBehaviour
         switch (question.GetCategory())
         {
             case Question.Category.HISTORY:
+                Debug.Log("historia");
                 questions[0].Add(question);
                 break;
             case Question.Category.SPORTS:
+                Debug.Log("dep");
                 questions[1].Add(question);
                 break;
             case Question.Category.SCIENCE:
+                Debug.Log("cie");
                 questions[2].Add(question);
                 break;
             case Question.Category.GEOGRAPHY:
+                Debug.Log("geo");
                 questions[3].Add(question);
                 break;
             case Question.Category.ART:
+                Debug.Log("arte");
                 questions[4].Add(question);
                 break;
             case Question.Category.ENTERTAINMENT:
+                Debug.Log("ent");
                 questions[5].Add(question);
                 break;
         }
@@ -253,33 +260,33 @@ public class GameManager : MonoBehaviour
         {
             case Square.QuestionCategory.HISTORY:
                 num=UnityEngine.Random.Range(0,questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[0][num];
+                //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.SPORTS:
                 num = UnityEngine.Random.Range(0, questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[1][num];
+                //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.SCIENCE:
                 num = UnityEngine.Random.Range(0, questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[2][num];
+                //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.GEOGRAPHY:
                 num = UnityEngine.Random.Range(0, questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[3][num];
+                //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.ART:
                 num = UnityEngine.Random.Range(0, questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[4][num];
+                //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.ENTERTAINMENT:
                 num = UnityEngine.Random.Range(0, questions[0].Count);
-                //questionToAsk = questions[0][num];
-                questionToAsk = questions[0][0];
+                questionToAsk = questions[5][num];
+                //questionToAsk = questions[0][0];
                 break;
         }
         SetQuestionPanel(questionToAsk);
@@ -287,9 +294,14 @@ public class GameManager : MonoBehaviour
         timeBar.StartTime(this);
     }
 
-    internal void Duel(List<Player> playersOnSquare)
+    public void Duel(List<Player> playersOnSquare)
+    {
+        StartCoroutine(DuelCoroutine(playersOnSquare));
+    }
+    IEnumerator DuelCoroutine(List<Player> playersOnSquare)
     {
         Player playerToCompete = null;
+       
         if (playersOnSquare.Count == 2)
         {
             if (playersOnSquare[0] == currentPlayer)
@@ -305,7 +317,13 @@ public class GameManager : MonoBehaviour
         {
             SetChooseRivalsButtons(playersOnSquare);
             ChooseRivalPanel.SetActive(true);
+            while (!playerToCompeteChosen)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
         }
+
+        //if(playerToCompete.GetCash()>0 && playerToCompete.)
     }
 
     private void SetChooseRivalsButtons(List<Player> playersOnSquare)

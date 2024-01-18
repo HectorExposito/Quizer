@@ -35,6 +35,18 @@ MonoBehaviour:
     m_Key: startGame_button
     m_Metadata:
       m_Items: []
+  - m_Id: 1017367332077568
+    m_Key: numberOfPlayers_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1017453038485504
+    m_Key: musicVolume_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1017555203342336
+    m_Key: fxVolume_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

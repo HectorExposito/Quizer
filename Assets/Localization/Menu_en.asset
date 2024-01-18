@@ -38,6 +38,18 @@ MonoBehaviour:
     m_Localized: START GAME
     m_Metadata:
       m_Items: []
+  - m_Id: 1017367332077568
+    m_Localized: NUMBER OF PLAYERS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1017453038485504
+    m_Localized: MUSIC VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1017555203342336
+    m_Localized: FX VOLUME
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

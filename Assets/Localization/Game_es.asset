@@ -23,7 +23,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 377175883776
-    m_Localized: NECESITAS AL MENOS 200$ PARA COMPRAR UN OBJETO.
+    m_Localized: NECESITAS TENER ESPACIO DISPONIBLE EN TU INVENTARIO Y AL MENOS 200$
+      PARA COMPRAR UN OBJETO.
     m_Metadata:
       m_Items: []
   - m_Id: 915439304704
