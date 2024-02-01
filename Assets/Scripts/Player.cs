@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,8 +54,8 @@ public class Player : MonoBehaviour
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
-        movement = Random.Range(1, MAX_MOVEMENT);
-        //movement = 4;
+        //movement = Random.Range(1, MAX_MOVEMENT);
+        movement = 2;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         actualSquare.RemovePlayer(this);
@@ -205,5 +206,24 @@ public class Player : MonoBehaviour
     public List<Item> GetInventory()
     {
         return itemsOnInventory;
+    }
+
+    public Square GetActualSquare()
+    {
+        return actualSquare;
+    }
+
+    internal void ReduceMoney()
+    {
+        if (cash > 200)
+        {
+            cash -= 200;
+        }
+        else
+        {
+            cash = 0;
+        }
+        Debug.Log("REDUCE MONEY "+cash);
+        playerUI.UpdateCashText(cash);
     }
 }

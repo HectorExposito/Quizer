@@ -32,11 +32,19 @@ public class GameManager : MonoBehaviour
     private bool actionFinished;
     private bool playerFailedQuestion;
     private bool questionForBuyingItem;
-    private bool playerToCompeteChosen;
+    private bool waitingForPlayerToSelectAnItem;
+    private Player playerToCompete;
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
-    [SerializeField] private GameObject ChooseRivalPanel;
+
+
+    //Duel
+    private bool playerToCompeteChosen;
+    private int priceChosen; //-1-> No price chosen  0->Money  1->Item
+    private bool duelQuestion;
+    [SerializeField] private GameObject chooseRivalPanel;
+    [SerializeField] private GameObject choosePricePanel;
     [SerializeField] private Button[] chooseRivalButtons;
 
     private int canBuyItem;
@@ -143,9 +151,11 @@ public class GameManager : MonoBehaviour
         diceThrown = false;
         actionFinished = false;
         playerFailedQuestion = false;
+
         do
         {
             currentPlayer = playersPlaying[playerTurn];
+            Debug.Log("Ha lanzado el dado?"+diceThrown);
             while (!diceThrown)
             {
                 yield return new WaitForSeconds(0.1f);
@@ -153,22 +163,24 @@ public class GameManager : MonoBehaviour
 
             currentPlayer.ThrowDice();
 
+            Debug.Log("Ha acabado la accion?"+actionFinished);
             while (!actionFinished)
             {
                 yield return new WaitForSeconds(0.1f);
             }
-
             diceThrown = false;
             actionFinished = false;
-
+            Debug.Log("Ha fallado la pregunta? "+ playerFailedQuestion);
             if (playerFailedQuestion)
             {
                 if (playerTurn == playersPlaying.Length - 1)
                 {
+                    Debug.Log("Cambio turno a 0");
                     playerTurn = 0;
                 }
                 else
                 {
+                    Debug.Log("Cambio turno a ++");
                     playerTurn++;
                 }
                 playerFailedQuestion = false;
@@ -300,8 +312,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator DuelCoroutine(List<Player> playersOnSquare)
     {
-        Player playerToCompete = null;
-       
+        playerToCompete = null;
+        priceChosen = -1;
         if (playersOnSquare.Count == 2)
         {
             if (playersOnSquare[0] == currentPlayer)
@@ -316,29 +328,76 @@ public class GameManager : MonoBehaviour
         else
         {
             SetChooseRivalsButtons(playersOnSquare);
-            ChooseRivalPanel.SetActive(true);
+            chooseRivalPanel.SetActive(true);
             while (!playerToCompeteChosen)
             {
                 yield return new WaitForSeconds(0.1f);
             }
+            chooseRivalPanel.SetActive(false);
         }
 
-        //if(playerToCompete.GetCash()>0 && playerToCompete.)
+        if(playerToCompete.GetCash()>0 && playerToCompete.GetInventory().Count > 0)
+        {
+            choosePricePanel.SetActive(true);
+            while (priceChosen==-1)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            choosePricePanel.SetActive(false);
+            AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
+        }
     }
+
 
     private void SetChooseRivalsButtons(List<Player> playersOnSquare)
     {
         int i = 0;
         if (playersOnSquare.Count==3)
         {
-            
+            chooseRivalButtons[1].interactable = true;
+            chooseRivalButtons[1].image.color = new Color(255, 255, 255, 255);
+            chooseRivalButtons[1].gameObject.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 255);
         }
         else
         {
-            
+            chooseRivalButtons[1].interactable = false;
+            chooseRivalButtons[1].image.color = new Color(255, 255, 255,0);
+            chooseRivalButtons[1].gameObject.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 0);
         }
     }
 
+    public void SelectPrice(int price)
+    {
+        if (price == 0)
+        {
+            priceChosen = 0;
+        }
+        else
+        {
+            priceChosen = 1;
+        }
+        
+    }
+
+    private void ResolveDuel()
+    {
+        if (priceChosen == 0)
+        {
+            if (playerToCompete.GetCash() > 200)
+            {
+                currentPlayer.ReceiveMoney(200);
+            }
+            else
+            {
+                currentPlayer.ReceiveMoney(playerToCompete.GetCash());
+            }
+            //playerToCompete.ReduceMoney();
+        }
+        else
+        {
+
+        }
+    }
     //It sets the components of the question panel
     private void SetQuestionPanel(Question questionToAsk)
     {
@@ -362,7 +421,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //It checks if the answer gicen is correct and updates the question panel
+    //It checks if the answer given is correct and updates the question panel
     public void CheckAnswer(int buttonPosition)
     {
         for (int i = 0; i < answerButtons.Length; i++)
@@ -377,14 +436,16 @@ public class GameManager : MonoBehaviour
                 answerButtons[i].GetComponent<Image>().sprite = buttonSprites[2];
             }
         }
-        Debug.Log(buttonPosition+" "+positionOfCorrectAnswer);
+        Debug.Log("Posicion del boton "+buttonPosition+" "+positionOfCorrectAnswer);
         if (buttonPosition != positionOfCorrectAnswer)
         {
+            Debug.Log("Pregunta fallada");
             playerFailedQuestion = true;
             if (questionForBuyingItem)
             {
                 questionForBuyingItem = false;
                 canBuyItem = -1;
+                Debug.Log("Pregunta fallada comprar objeto "+ playerFailedQuestion);
             }
             audioPlayer.PlayWrongAnswerMusic();
         }
@@ -396,15 +457,21 @@ public class GameManager : MonoBehaviour
                 questionForBuyingItem = false;
                 canBuyItem = 1;
             }
-            else
+            else if (duelQuestion)
+            {
+                ResolveDuel();
+            }else
             {
                 currentPlayer.ReceiveMoney(MONEY_FOR_CORRECT_ANSWER);
             }
         }
         timeBar.StopTime();
+        Debug.Log("CHECK ANSWER ACTION FINISHED");
         ActionFinished();
         StartCoroutine(CloseQuestionPanel());
     }
+
+    
 
     //Waits X seconds before closing the question panel to let the players see the correct answer
     IEnumerator CloseQuestionPanel()
@@ -427,6 +494,7 @@ public class GameManager : MonoBehaviour
             audioPlayer.PlayBaseSound();
             currentPlayer.BaseAction();
         }
+        Debug.Log("BASE ACTION FINISHED");
         ActionFinished();
     }
 
@@ -434,7 +502,6 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer.GetTotalMoney() >= 200)
         {
-            shopPanel.SetActive(true);
             StartCoroutine(ShopCoroutine());
         }
         else
@@ -445,20 +512,27 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ShopCoroutine()
     {
+        shopPanel.SetActive(true);
+        waitingForPlayerToSelectAnItem = true;
         yield return new WaitForSeconds(15f);
-        shopPanel.SetActive(false);
-        ActionFinished();
+        if (waitingForPlayerToSelectAnItem)
+        {
+            shopPanel.SetActive(false);
+            Debug.Log("SHOP ACTION FINISHED");
+            ActionFinished();
+        }
     }
     IEnumerator ShowNoMoneyPanel()
     {
         noMoneyPanel.SetActive(true);
         yield return new WaitForSeconds(2f);
         noMoneyPanel.SetActive(false);
+        Debug.Log("NO MONEY ACTION FINISHED");
         ActionFinished();
     }
     public void BuyItem(int item)
     {
-        StopCoroutine(ShopCoroutine());
+        waitingForPlayerToSelectAnItem = false;
         StartCoroutine(BuyItemCoroutine(item));
     }
     public IEnumerator BuyItemCoroutine(int item)
@@ -538,7 +612,7 @@ public class GameManager : MonoBehaviour
         }
         canBuyItem = 0;
         
-        ActionFinished();
+        //ActionFinished();
     }
 
     public void ThrowDice()

@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: chooseRival
     m_Metadata:
       m_Items: []
+  - m_Id: 6086481381638144
+    m_Key: choosePrice
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
