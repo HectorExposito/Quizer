@@ -226,4 +226,16 @@ public class Player : MonoBehaviour
         Debug.Log("REDUCE MONEY "+cash);
         playerUI.UpdateCashText(cash);
     }
+
+    internal void RemoveItemFromInventory(Item itemToCompete)
+    {
+        itemsOnInventory.Remove(itemToCompete);
+        playerUI.UpdateInventoryImages(itemsOnInventory);
+    }
+
+    internal void Additem(Item itemToCompete)
+    {
+        itemsOnInventory.Add(itemToCompete);
+        playerUI.UpdateInventoryImages(itemsOnInventory);
+    }
 }

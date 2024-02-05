@@ -13,21 +13,24 @@ public class GameManager : MonoBehaviour
     private List<Question>[] questions;//0->historia 1->deporte 2->ciencias 3->geografia 4->arte 5->entretenimiento
 
     private int positionOfCorrectAnswer;
-    //Questions panel
+    private int canBuyItem;
+    #region QUESTION_PANEL_VARIABLES
     [SerializeField] private GameObject questionsPanel;
     [SerializeField] private TMP_Text questionText;
     [SerializeField] private Button[] answerButtons;
     [SerializeField] private Sprite[] buttonSprites;//0->normal 1->correct 2->wrong
     [SerializeField] private TimeBar timeBar;
     [SerializeField] private float timeBeforeClosingPanel;
+    #endregion
 
-    //Players
+    #region PLAYERS_VARIABLES
     [SerializeField] private Player[] allPlayers;//0->yellow 1->red 2->green 3->blue
     private Player[] playersPlaying;
     [SerializeField] private GameObject[] playersUIPanels;//0->yellow 1->red 2->green 3->blue
     private Player currentPlayer;
+    #endregion
 
-    //Game
+    #region GAME_VARIABLES
     private bool diceThrown;
     private bool actionFinished;
     private bool playerFailedQuestion;
@@ -37,23 +40,92 @@ public class GameManager : MonoBehaviour
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
+    #endregion
 
-
-    //Duel
+    #region DUEL_VARIABLES
     private bool playerToCompeteChosen;
     private int priceChosen; //-1-> No price chosen  0->Money  1->Item
+    private int itemChosen;
     private bool duelQuestion;
+    private Player.Item itemToCompete;
     [SerializeField] private GameObject chooseRivalPanel;
     [SerializeField] private GameObject choosePricePanel;
+    [SerializeField] private GameObject chooseItemPanel;
     [SerializeField] private Button[] chooseRivalButtons;
+    [SerializeField] private Button[] chooseItemButtons;
+    [SerializeField] private Sprite[] itemsSprites;
+    #endregion
+    
 
-    private int canBuyItem;
-
+    #region SETGAME_METHODS
     private void Awake()
     {
         SetPlayersPlaying();
     }
 
+    void Start()
+    {
+        //We initialize the array that will store all the questions
+        questions = new List<Question>[6];
+        for (int i = 0; i < questions.Length; i++)
+        {
+            questions[i] = new List<Question>();
+        }
+        ReadQuestions();
+        StartCoroutine(Game());
+    }
+
+    //It creates all the questions reading from the file that contain them
+    private void ReadQuestions()
+    {
+        List<string[]> data = fm.ReadFile();
+
+        foreach (string[] q in data)
+        {
+            Question question;
+            string[] wrongAnswers = new string[3];
+            for (int i = 3; i < q.Length; i++)
+            {
+                //Debug.Log(q[1]+" "+q[i]);
+                wrongAnswers[i - 3] = q[i];
+            }
+            question = new Question(q[0], q[1], q[2], wrongAnswers);
+            SaveQuestion(question);
+        }
+    }
+
+    //It saves each question on the position of the array that correspond
+    private void SaveQuestion(Question question)
+    {
+        switch (question.GetCategory())
+        {
+            case Question.Category.HISTORY:
+                Debug.Log("historia");
+                questions[0].Add(question);
+                break;
+            case Question.Category.SPORTS:
+                Debug.Log("dep");
+                questions[1].Add(question);
+                break;
+            case Question.Category.SCIENCE:
+                Debug.Log("cie");
+                questions[2].Add(question);
+                break;
+            case Question.Category.GEOGRAPHY:
+                Debug.Log("geo");
+                questions[3].Add(question);
+                break;
+            case Question.Category.ART:
+                Debug.Log("arte");
+                questions[4].Add(question);
+                break;
+            case Question.Category.ENTERTAINMENT:
+                Debug.Log("ent");
+                questions[5].Add(question);
+                break;
+        }
+    }
+    
     private void SetPlayersPlaying()
     {
         int numberOfPlayers = 0;
@@ -76,10 +148,10 @@ public class GameManager : MonoBehaviour
 
         playersPlaying = new Player[numberOfPlayers];
 
-        ActivatePlayeres();
+        ActivatePlayers();
     }
 
-    private void ActivatePlayeres()
+    private void ActivatePlayers()
     {
         int num = 0;
 
@@ -131,20 +203,9 @@ public class GameManager : MonoBehaviour
             playersUIPanels[3].SetActive(false);
         }
     }
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //We initialize the array that will store all the questions
-        questions = new List<Question>[6];
-        for (int i = 0; i < questions.Length; i++)
-        {
-            questions[i] = new List<Question>();
-        }
-        ReadQuestions();
-        StartCoroutine(Game());
-    }
-
+    #region GAME_METHODS
     IEnumerator Game()
     {
         int playerTurn = 0;
@@ -155,7 +216,7 @@ public class GameManager : MonoBehaviour
         do
         {
             currentPlayer = playersPlaying[playerTurn];
-            Debug.Log("Ha lanzado el dado?"+diceThrown);
+            Debug.Log("Ha lanzado el dado?" + diceThrown);
             while (!diceThrown)
             {
                 yield return new WaitForSeconds(0.1f);
@@ -163,14 +224,14 @@ public class GameManager : MonoBehaviour
 
             currentPlayer.ThrowDice();
 
-            Debug.Log("Ha acabado la accion?"+actionFinished);
+            Debug.Log("Ha acabado la accion?" + actionFinished);
             while (!actionFinished)
             {
                 yield return new WaitForSeconds(0.1f);
             }
             diceThrown = false;
             actionFinished = false;
-            Debug.Log("Ha fallado la pregunta? "+ playerFailedQuestion);
+            Debug.Log("Ha fallado la pregunta? " + playerFailedQuestion);
             if (playerFailedQuestion)
             {
                 if (playerTurn == playersPlaying.Length - 1)
@@ -185,7 +246,7 @@ public class GameManager : MonoBehaviour
                 }
                 playerFailedQuestion = false;
             }
-            Debug.Log("Fin juego "+CheckIfGameEnded());
+            Debug.Log("Fin juego " + CheckIfGameEnded());
         } while (!CheckIfGameEnded());
     }
 
@@ -210,68 +271,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //It creates all the questions reading from the file that contain them
-    private void ReadQuestions()
+    public void ThrowDice()
     {
-        List<string[]> data=fm.ReadFile();
-
-        foreach (string[] q in data)
-        {
-            Question question;
-            string[] wrongAnswers = new string[3];
-            for (int i = 3; i < q.Length; i++)
-            {
-                //Debug.Log(q[1]+" "+q[i]);
-                wrongAnswers[i - 3] = q[i];
-            }
-            question = new Question(q[0], q[1], q[2],wrongAnswers);
-            SaveQuestion(question);
-        }
+        Debug.Log("Tirar dado");
+        diceThrown = true;
     }
 
-    //It saves each question on the position of the array that correspond
-    private void SaveQuestion(Question question)
+    public void Base()
     {
-        switch (question.GetCategory())
+        if (currentPlayer.CheckIfItIsOnItsBase())
         {
-            case Question.Category.HISTORY:
-                Debug.Log("historia");
-                questions[0].Add(question);
-                break;
-            case Question.Category.SPORTS:
-                Debug.Log("dep");
-                questions[1].Add(question);
-                break;
-            case Question.Category.SCIENCE:
-                Debug.Log("cie");
-                questions[2].Add(question);
-                break;
-            case Question.Category.GEOGRAPHY:
-                Debug.Log("geo");
-                questions[3].Add(question);
-                break;
-            case Question.Category.ART:
-                Debug.Log("arte");
-                questions[4].Add(question);
-                break;
-            case Question.Category.ENTERTAINMENT:
-                Debug.Log("ent");
-                questions[5].Add(question);
-                break;
+            audioPlayer.PlayBaseSound();
+            currentPlayer.BaseAction();
         }
+        Debug.Log("BASE ACTION FINISHED");
+        ActionFinished();
     }
-    
+
+    private void ActionFinished()
+    {
+        Debug.Log("ActionFinished");
+        actionFinished = true;
+    }
+
+    #endregion
+
+    #region QUESTION_METHODS
     //It selects the question to ask according to the category it receives and then it asks it to the player
     public void AskQuestion(Square.QuestionCategory questionCategory)
     {
         audioPlayer.PlayQuestionMusic();
-        Question questionToAsk=null;
+        Question questionToAsk = null;
         int num;
         //It selects a random question from the array
         switch (questionCategory)
         {
             case Square.QuestionCategory.HISTORY:
-                num=UnityEngine.Random.Range(0,questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[0].Count);
                 questionToAsk = questions[0][num];
                 //questionToAsk = questions[0][0];
                 break;
@@ -306,14 +342,100 @@ public class GameManager : MonoBehaviour
         timeBar.StartTime(this);
     }
 
+    //It checks if the answer given is correct and updates the question panel
+    public void CheckAnswer(int buttonPosition)
+    {
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            answerButtons[i].interactable = false;
+            if (i == positionOfCorrectAnswer)
+            {
+                answerButtons[i].GetComponent<Image>().sprite = buttonSprites[1];
+            }
+            else
+            {
+                answerButtons[i].GetComponent<Image>().sprite = buttonSprites[2];
+            }
+        }
+        Debug.Log("Posicion del boton " + buttonPosition + " " + positionOfCorrectAnswer);
+        if (buttonPosition != positionOfCorrectAnswer)
+        {
+            Debug.Log("Pregunta fallada");
+            playerFailedQuestion = true;
+            if (questionForBuyingItem)
+            {
+                questionForBuyingItem = false;
+                canBuyItem = -1;
+                Debug.Log("Pregunta fallada comprar objeto " + playerFailedQuestion);
+            }
+            audioPlayer.PlayWrongAnswerMusic();
+        }
+        else
+        {
+            audioPlayer.PlayRightAnswerMusic();
+            if (questionForBuyingItem)
+            {
+                questionForBuyingItem = false;
+                canBuyItem = 1;
+            }
+            else if (duelQuestion)
+            {
+                ResolveDuel();
+            }
+            else
+            {
+                currentPlayer.ReceiveMoney(MONEY_FOR_CORRECT_ANSWER);
+            }
+        }
+        timeBar.StopTime();
+        Debug.Log("CHECK ANSWER ACTION FINISHED");
+        ActionFinished();
+        StartCoroutine(CloseQuestionPanel());
+    }
+
+    //It sets the components of the question panel
+    private void SetQuestionPanel(Question questionToAsk)
+    {
+        questionText.text = questionToAsk.GetQuestion();
+        positionOfCorrectAnswer = UnityEngine.Random.Range(0, 4);
+        int wrongAnswersUsed = 0;
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            int positionOfTheButton = i;
+            answerButtons[i].interactable = true;
+            answerButtons[i].GetComponent<Image>().sprite = buttonSprites[0];
+            if (i == positionOfCorrectAnswer)
+            {
+                answerButtons[i].GetComponentInChildren<TMP_Text>().text = questionToAsk.GetCorrectAnswer();
+            }
+            else
+            {
+                answerButtons[i].GetComponentInChildren<TMP_Text>().text = questionToAsk.GetWrongAnswers()[wrongAnswersUsed];
+                wrongAnswersUsed++;
+            }
+        }
+    }
+
+    //Waits X seconds before closing the question panel to let the players see the correct answer
+    IEnumerator CloseQuestionPanel()
+    {
+        yield return new WaitForSeconds(timeBeforeClosingPanel);
+        questionsPanel.SetActive(false);
+        audioPlayer.PlayGameMusic();
+    }
+    #endregion
+
+    #region DUEL_METHODS
     public void Duel(List<Player> playersOnSquare)
     {
         StartCoroutine(DuelCoroutine(playersOnSquare));
     }
+
     IEnumerator DuelCoroutine(List<Player> playersOnSquare)
     {
         playerToCompete = null;
         priceChosen = -1;
+        duelQuestion = true;
         if (playersOnSquare.Count == 2)
         {
             if (playersOnSquare[0] == currentPlayer)
@@ -336,23 +458,100 @@ public class GameManager : MonoBehaviour
             chooseRivalPanel.SetActive(false);
         }
 
-        if(playerToCompete.GetCash()>0 && playerToCompete.GetInventory().Count > 0)
+        if (playerToCompete.GetCash() > 0 && playerToCompete.GetInventory().Count > 0)
         {
             choosePricePanel.SetActive(true);
-            while (priceChosen==-1)
+            while (priceChosen == -1)
             {
                 yield return new WaitForSeconds(0.1f);
             }
             choosePricePanel.SetActive(false);
+            if (priceChosen == 1)
+            {
+                StartCoroutine(CompeteForAnItemCoroutine());
+            }
+            else
+            {
+                AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
+            }
+        }
+        else if (playerToCompete.GetInventory().Count == 0)
+        {
+            priceChosen = 0;
             AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
+        }
+        else if (playerToCompete.GetCash() > 0)
+        {
+            StartCoroutine(CompeteForAnItemCoroutine());
         }
     }
 
+    private IEnumerator CompeteForAnItemCoroutine()
+    {
+        priceChosen = 1;
+        itemChosen = -1;
+        SetChooseItemPanel(playerToCompete);
+        chooseItemPanel.SetActive(true);
+        while (itemChosen == -1)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        chooseItemPanel.SetActive(false);
+        AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
+    }
+
+    private void SetChooseItemPanel(Player playerToCompete)
+    {
+        for (int i = 0; i < playerToCompete.GetInventory().Count; i++)
+        {
+            chooseItemButtons[i].interactable = true;
+            SetItemButtonImage(chooseItemButtons[i],playerToCompete.GetInventory()[i]);
+        }
+
+        for (int i = playerToCompete.GetInventory().Count; i < chooseItemButtons.Length; i++)
+        {
+            chooseItemButtons[i].interactable = false;
+            chooseItemButtons[i].gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
+    private void SetItemButtonImage(Button button, Player.Item item)
+    {
+        switch (item)
+        {
+            case Player.Item.ART:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[0];
+                break;
+            case Player.Item.ENTERTAINMENT:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[1];
+                break;
+            case Player.Item.GEOGRAPHY:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[2];
+                break;
+            case Player.Item.HISTORY:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[3];
+                break;
+            case Player.Item.SCIENCE:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[4];
+                break;
+            case Player.Item.SPORTS:
+                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[5];
+                break;
+        }
+        button.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void SelectItem(int item)
+    {
+
+        itemChosen = item;
+        itemToCompete = playerToCompete.GetInventory()[item];
+    }
 
     private void SetChooseRivalsButtons(List<Player> playersOnSquare)
     {
         int i = 0;
-        if (playersOnSquare.Count==3)
+        if (playersOnSquare.Count == 3)
         {
             chooseRivalButtons[1].interactable = true;
             chooseRivalButtons[1].image.color = new Color(255, 255, 255, 255);
@@ -361,7 +560,7 @@ public class GameManager : MonoBehaviour
         else
         {
             chooseRivalButtons[1].interactable = false;
-            chooseRivalButtons[1].image.color = new Color(255, 255, 255,0);
+            chooseRivalButtons[1].image.color = new Color(255, 255, 255, 0);
             chooseRivalButtons[1].gameObject.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 0);
         }
     }
@@ -376,7 +575,7 @@ public class GameManager : MonoBehaviour
         {
             priceChosen = 1;
         }
-        
+
     }
 
     private void ResolveDuel()
@@ -391,113 +590,18 @@ public class GameManager : MonoBehaviour
             {
                 currentPlayer.ReceiveMoney(playerToCompete.GetCash());
             }
-            //playerToCompete.ReduceMoney();
+            playerToCompete.ReduceMoney();
         }
         else
         {
-
+            playerToCompete.RemoveItemFromInventory(itemToCompete);
+            currentPlayer.Additem(itemToCompete);
         }
+        duelQuestion = false;
     }
-    //It sets the components of the question panel
-    private void SetQuestionPanel(Question questionToAsk)
-    {
-        questionText.text = questionToAsk.GetQuestion();
-        positionOfCorrectAnswer = UnityEngine.Random.Range(0,4);
-        int wrongAnswersUsed = 0;
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            int positionOfTheButton = i;
-            answerButtons[i].interactable = true;
-            answerButtons[i].GetComponent<Image>().sprite = buttonSprites[0];
-            if (i == positionOfCorrectAnswer)
-            {
-                answerButtons[i].GetComponentInChildren<TMP_Text>().text = questionToAsk.GetCorrectAnswer();
-            }
-            else
-            {
-                answerButtons[i].GetComponentInChildren<TMP_Text>().text = questionToAsk.GetWrongAnswers()[wrongAnswersUsed];
-                wrongAnswersUsed++;
-            }
-        }
-    }
+    #endregion
 
-    //It checks if the answer given is correct and updates the question panel
-    public void CheckAnswer(int buttonPosition)
-    {
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            answerButtons[i].interactable = false;
-            if (i == positionOfCorrectAnswer)
-            {
-                answerButtons[i].GetComponent<Image>().sprite = buttonSprites[1];
-            }
-            else
-            {
-                answerButtons[i].GetComponent<Image>().sprite = buttonSprites[2];
-            }
-        }
-        Debug.Log("Posicion del boton "+buttonPosition+" "+positionOfCorrectAnswer);
-        if (buttonPosition != positionOfCorrectAnswer)
-        {
-            Debug.Log("Pregunta fallada");
-            playerFailedQuestion = true;
-            if (questionForBuyingItem)
-            {
-                questionForBuyingItem = false;
-                canBuyItem = -1;
-                Debug.Log("Pregunta fallada comprar objeto "+ playerFailedQuestion);
-            }
-            audioPlayer.PlayWrongAnswerMusic();
-        }
-        else
-        {
-            audioPlayer.PlayRightAnswerMusic();
-            if (questionForBuyingItem)
-            {
-                questionForBuyingItem = false;
-                canBuyItem = 1;
-            }
-            else if (duelQuestion)
-            {
-                ResolveDuel();
-            }else
-            {
-                currentPlayer.ReceiveMoney(MONEY_FOR_CORRECT_ANSWER);
-            }
-        }
-        timeBar.StopTime();
-        Debug.Log("CHECK ANSWER ACTION FINISHED");
-        ActionFinished();
-        StartCoroutine(CloseQuestionPanel());
-    }
-
-    
-
-    //Waits X seconds before closing the question panel to let the players see the correct answer
-    IEnumerator CloseQuestionPanel()
-    {
-        yield return new WaitForSeconds(timeBeforeClosingPanel);
-        questionsPanel.SetActive(false);
-        audioPlayer.PlayGameMusic();
-    }
-
-    private void ActionFinished()
-    {
-        Debug.Log("ActionFinished");
-        actionFinished = true;
-    }
-
-    public void Base()
-    {
-        if (currentPlayer.CheckIfItIsOnItsBase())
-        {
-            audioPlayer.PlayBaseSound();
-            currentPlayer.BaseAction();
-        }
-        Debug.Log("BASE ACTION FINISHED");
-        ActionFinished();
-    }
-
+    #region SHOP_METHODS
     public void Shop()
     {
         if (currentPlayer.GetTotalMoney() >= 200)
@@ -522,6 +626,7 @@ public class GameManager : MonoBehaviour
             ActionFinished();
         }
     }
+
     IEnumerator ShowNoMoneyPanel()
     {
         noMoneyPanel.SetActive(true);
@@ -530,11 +635,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("NO MONEY ACTION FINISHED");
         ActionFinished();
     }
+
     public void BuyItem(int item)
     {
         waitingForPlayerToSelectAnItem = false;
         StartCoroutine(BuyItemCoroutine(item));
     }
+
     public IEnumerator BuyItemCoroutine(int item)
     {
         canBuyItem = 0;
@@ -544,11 +651,11 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 AskQuestion(Square.QuestionCategory.SPORTS);
-                while (canBuyItem==0)
+                while (canBuyItem == 0)
                 {
                     yield return new WaitForSeconds(0.1f);
                 }
-                Debug.Log("cabuyitem "+canBuyItem);
+                Debug.Log("cabuyitem " + canBuyItem);
                 if (canBuyItem == 1)
                 {
                     currentPlayer.BuyItem(Player.Item.SPORTS);
@@ -611,18 +718,14 @@ public class GameManager : MonoBehaviour
                 break;
         }
         canBuyItem = 0;
-        
+
         //ActionFinished();
     }
 
-    public void ThrowDice()
-    {
-        Debug.Log("Tirar dado");
-        diceThrown = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #endregion
+
+    
+
+    
+    
 }
