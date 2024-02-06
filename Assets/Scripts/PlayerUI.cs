@@ -103,10 +103,8 @@ public class PlayerUI : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            Debug.Log("aaaaaaaaaaaaaa"+hit.collider+" "+alreadyShowingInventory);
             if (hit.collider != null && hit.collider.transform == this.transform)
             {
-                Debug.Log("bbbbbbbbbb");
                 if (!alreadyShowingInventory)
                 {
                     ShowInventory();

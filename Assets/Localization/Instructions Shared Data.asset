@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Instructions Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Instructions
+  m_TableCollectionNameGuidString: a0c5b0fd78a362d49af37589ea1e13e6
+  m_Entries:
+  - m_Id: 10316890112
+    m_Key: Return_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 291138125824
+    m_Key: Goal_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 294590038016
+    m_Key: Square_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300663390208
+    m_Key: Turn_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 312801705984
+    m_Key: Duel_button
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3894795785605480450
+  references:
+    version: 2
+    RefIds:
+    - rid: 3894795785605480450
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1707213171650

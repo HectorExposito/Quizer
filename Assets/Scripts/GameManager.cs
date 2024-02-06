@@ -428,7 +428,31 @@ public class GameManager : MonoBehaviour
     #region DUEL_METHODS
     public void Duel(List<Player> playersOnSquare)
     {
-        StartCoroutine(DuelCoroutine(playersOnSquare));
+        if (playersAbleToDuel(playersOnSquare) >= 1)
+        {
+            StartCoroutine(DuelCoroutine(playersOnSquare));
+        }
+        else
+        {
+            AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
+        }
+    }
+
+    private int playersAbleToDuel(List<Player> playersOnSquare)
+    {
+        int playersAbleToDuel = 0;
+
+        for (int i = 0; i < playersOnSquare.Count; i++)
+        {
+            if (playersOnSquare[i] != currentPlayer)
+            {
+                if (playersOnSquare[i].GetCash() > 0 || playersOnSquare[i].GetInventory().Count > 0)
+                {
+                    playersAbleToDuel++;
+                }
+            }
+        }
+        return playersAbleToDuel;
     }
 
     IEnumerator DuelCoroutine(List<Player> playersOnSquare)
