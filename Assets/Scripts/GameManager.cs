@@ -504,7 +504,7 @@ public class GameManager : MonoBehaviour
             priceChosen = 0;
             AskQuestion(currentPlayer.GetActualSquare().GetQuestionCategory());
         }
-        else if (playerToCompete.GetCash() > 0)
+        else if (playerToCompete.GetCash() == 0)
         {
             StartCoroutine(CompeteForAnItemCoroutine());
         }
@@ -544,22 +544,22 @@ public class GameManager : MonoBehaviour
         switch (item)
         {
             case Player.Item.ART:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[0];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[0];
                 break;
             case Player.Item.ENTERTAINMENT:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[1];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[1];
                 break;
             case Player.Item.GEOGRAPHY:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[2];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[2];
                 break;
             case Player.Item.HISTORY:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[3];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[3];
                 break;
             case Player.Item.SCIENCE:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[4];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[4];
                 break;
             case Player.Item.SPORTS:
-                button.gameObject.transform.GetChild(0).GetComponentInChildren<Image>().sprite = itemsSprites[5];
+                button.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = itemsSprites[5];
                 break;
         }
         button.gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -575,17 +575,43 @@ public class GameManager : MonoBehaviour
     private void SetChooseRivalsButtons(List<Player> playersOnSquare)
     {
         int i = 0;
-        if (playersOnSquare.Count == 3)
+        if (playersOnSquare.Count == 4)
         {
             chooseRivalButtons[1].interactable = true;
             chooseRivalButtons[1].image.color = new Color(255, 255, 255, 255);
-            chooseRivalButtons[1].gameObject.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 255);
+            chooseRivalButtons[1].gameObject.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+
+            for (int j = 0; j < playersOnSquare.Count; j++)
+            {
+                if (playersOnSquare[j] != currentPlayer)
+                {
+                    chooseRivalButtons[j].gameObject.transform.GetChild(0).GetComponent<Image>().sprite = playersOnSquare[j].GetSprite();
+                }
+            }
         }
         else
         {
             chooseRivalButtons[1].interactable = false;
             chooseRivalButtons[1].image.color = new Color(255, 255, 255, 0);
-            chooseRivalButtons[1].gameObject.GetComponentInChildren<Image>().color = new Color(255, 255, 255, 0);
+            chooseRivalButtons[1].gameObject.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
+
+            bool firstButton = true;
+            for (int j = 0; j < playersOnSquare.Count; j++)
+            {
+                if (playersOnSquare[j] != currentPlayer)
+                {
+                    if (firstButton)
+                    {
+                        chooseRivalButtons[0].gameObject.transform.GetChild(0).GetComponent<Image>().sprite = playersOnSquare[j].GetSprite();
+                        firstButton = false;
+                    }
+                    else
+                    {
+                        chooseRivalButtons[2].gameObject.transform.GetChild(0).GetComponent<Image>().sprite = playersOnSquare[j].GetSprite();
+                    }
+
+                }
+            }
         }
     }
 
@@ -622,6 +648,19 @@ public class GameManager : MonoBehaviour
             currentPlayer.Additem(itemToCompete);
         }
         duelQuestion = false;
+    }
+
+    public void SelectPlayerToCompete(int player)
+    {
+        for (int i = 0; i < playersPlaying.Length; i++)
+        {
+            if (chooseRivalButtons[player].gameObject.transform.GetChild(0).GetComponent<Image>().sprite == playersPlaying[i].GetSprite())
+            {
+                playerToCompete = playersPlaying[i];
+                playerToCompeteChosen = true;
+                return;
+            }
+        }
     }
     #endregion
 

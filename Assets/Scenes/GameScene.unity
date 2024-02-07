@@ -440,7 +440,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1665357636}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BuyItem
+        m_MethodName: SelectPlayerToCompete
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4719,13 +4719,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 101044592}
+  m_TargetGraphic: {fileID: 731985583}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1665357636}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BuyItem
+        m_MethodName: SelectPlayerToCompete
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5214,13 +5214,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 101044592}
+  m_TargetGraphic: {fileID: 853500909}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1665357636}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BuyItem
+        m_MethodName: SelectPlayerToCompete
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

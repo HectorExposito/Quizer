@@ -109,11 +109,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool GetAlreadyFinish()
-    {
-        return alreadyFinish;
-    }
-
     public void ReceiveMoney(int money)
     {
         cash += money;
@@ -135,11 +130,6 @@ public class Player : MonoBehaviour
         cash = 0;
         playerUI.UpdateCashText(cash);
         playerUI.UpdateSavedMoneyText(savedMoney);
-    }
-
-    internal int GetTotalMoney()
-    {
-        return cash + savedMoney;
     }
 
     internal void BuyItem(Item item)
@@ -198,21 +188,6 @@ public class Player : MonoBehaviour
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
 
-    public int GetCash()
-    {
-        return cash;
-    }
-
-    public List<Item> GetInventory()
-    {
-        return itemsOnInventory;
-    }
-
-    public Square GetActualSquare()
-    {
-        return actualSquare;
-    }
-
     internal void ReduceMoney()
     {
         if (cash > 200)
@@ -238,4 +213,36 @@ public class Player : MonoBehaviour
         itemsOnInventory.Add(itemToCompete);
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
+
+    #region GETTERS
+    public Square GetActualSquare()
+    {
+        return actualSquare;
+    }
+
+    public Sprite GetSprite()
+    {
+        return GetComponent<SpriteRenderer>().sprite;
+    }
+
+    public int GetCash()
+    {
+        return cash;
+    }
+
+    public List<Item> GetInventory()
+    {
+        return itemsOnInventory;
+    }
+
+    internal int GetTotalMoney()
+    {
+        return cash + savedMoney;
+    }
+
+    public bool GetAlreadyFinish()
+    {
+        return alreadyFinish;
+    }
+    #endregion
 }
