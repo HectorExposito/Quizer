@@ -6,19 +6,21 @@ using UnityEngine;
 
 public class FileManager : MonoBehaviour
 {
-    private const string path = "C:\\Users\\hecto\\Downloads\\Preguntas.tsv";
+    public string file="preguntas.tsv";
+    string filePath;
     void Start()
     {
-        
     }
 
     public List<string[]> ReadFile()
     {
         List<string[]> questions=new List<string[]>();
-        StreamReader reader = new StreamReader(path);
+        GetPath();
+        StreamReader reader = new StreamReader(filePath);
         bool endOfFile = false;
         while(!endOfFile){
             string data = reader.ReadLine();
+            Debug.Log(data);
             if (data==null)
             {
                 endOfFile = true;
@@ -30,6 +32,11 @@ public class FileManager : MonoBehaviour
             }
         }
         return questions;
+    }
+
+    private void GetPath()
+    {
+        filePath= Application.streamingAssetsPath + "/"+file;
     }
 
     // Update is called once per frame
