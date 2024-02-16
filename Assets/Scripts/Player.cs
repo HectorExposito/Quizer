@@ -54,8 +54,8 @@ public class Player : MonoBehaviour
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
-        //movement = Random.Range(1, MAX_MOVEMENT);
-        movement = 2;
+        movement = UnityEngine.Random.Range(1, MAX_MOVEMENT);
+        //movement = 2;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         actualSquare.RemovePlayer(this);

@@ -16,11 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: cd1cf48b5f3e309409ad7ac07daa23d6
-  m_SerializeEntries:
-  - m_GUID: 5f35ccc456d182741b391bcc882007c0
-    m_Address: Assets/Files/Preguntas.tsv
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf27198ad35c4eb408a96f2f310b2be2, type: 2}
   m_SchemaSet:
