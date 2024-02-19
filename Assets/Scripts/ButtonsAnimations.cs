@@ -10,11 +10,21 @@ public class ButtonsAnimations : MonoBehaviour
     private Vector3 scale;
     private bool makingBigger;
     private bool mouseExited;
+    private float movingDistance;
     private void Start()
     {
         buttonChildTransform = gameObject.transform.GetChild(0).GetComponent<RectTransform>();
         scale = new Vector3(1.1f,1.1f,1.1f);
         makingBigger = true;
+        if (gameObject.transform.parent.GetComponent<GridLayout>() != null)
+        {
+            movingDistance = gameObject.transform.parent.GetComponent<GridLayout>().cellSize.y / 11;
+        }
+        else
+        {
+            movingDistance = gameObject.GetComponent<RectTransform>().sizeDelta.y / 11;
+        }
+        
     }
     public void OnMouseOver()
     {
@@ -28,10 +38,8 @@ public class ButtonsAnimations : MonoBehaviour
         {
             gameObject.transform.localScale =
                 new Vector3(gameObject.transform.localScale.x + 0.01f, gameObject.transform.localScale.y + 0.01f, 1);
-            Debug.Log(gameObject.transform.localScale.x +" "+ scale.x);
             if (gameObject.transform.localScale.x >= scale.x)
             {
-                Debug.Log("cambia a pequeño");
                 makingBigger = false;
             }
         }
