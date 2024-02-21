@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: fxVolume_text
     m_Metadata:
       m_Items: []
+  - m_Id: 13341620614152192
+    m_Key: screenResolution
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

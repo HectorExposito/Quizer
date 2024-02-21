@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: FX VOLUME
     m_Metadata:
       m_Items: []
+  - m_Id: 13341620614152192
+    m_Localized: RESOLUTION
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

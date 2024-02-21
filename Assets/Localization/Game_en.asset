@@ -43,6 +43,22 @@ MonoBehaviour:
     m_Localized: Choose what you want to steal from the opponent.
     m_Metadata:
       m_Items: []
+  - m_Id: 13341407333793792
+    m_Localized: GAME OVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341545871654912
+    m_Localized: THE WINNER IS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341624288362496
+    m_Localized: PLAY AGAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341697999060992
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

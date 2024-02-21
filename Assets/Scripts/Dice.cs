@@ -9,7 +9,7 @@ public class Dice : MonoBehaviour
     private int actualChangesLeft;//Number of changes left 
     private int lastPosition=0;//Saves the last number that was shown by the dice in order to not repeat it
     private int position = 0;//Saves the position of the number that is going to be shown
-
+    [SerializeField] private GameManager gameManager;
     private void Start()
     {
         actualChangesLeft = NUMBER_OF_CHANGES;
@@ -41,6 +41,19 @@ public class Dice : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sprites[number-1];
             actualChangesLeft = NUMBER_OF_CHANGES;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            if (hit.collider != null && hit.collider.transform == this.transform)
+            {
+                gameManager.ThrowDice();
+            }
         }
     }
 }

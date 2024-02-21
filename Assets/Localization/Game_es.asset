@@ -43,6 +43,22 @@ MonoBehaviour:
     m_Localized: Elige que quieres robar al rival.
     m_Metadata:
       m_Items: []
+  - m_Id: 13341407333793792
+    m_Localized: FIN DEL JUEGO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341545871654912
+    m_Localized: EL GANADOR ES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341624288362496
+    m_Localized: JUGAR OTRA VEZ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13341697999060992
+    m_Localized: "MEN\xDA PRINCIPAL"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

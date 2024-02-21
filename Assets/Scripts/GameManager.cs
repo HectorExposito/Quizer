@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,9 +38,12 @@ public class GameManager : MonoBehaviour
     private bool questionForBuyingItem;
     private bool waitingForPlayerToSelectAnItem;
     private Player playerToCompete;
+    private Player winnerPlayer;
     private const int MONEY_FOR_CORRECT_ANSWER = 200;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private Image winnerImage;
     #endregion
 
     #region DUEL_VARIABLES
@@ -216,7 +220,6 @@ public class GameManager : MonoBehaviour
         do
         {
             currentPlayer = playersPlaying[playerTurn];
-            Debug.Log("Ha lanzado el dado?" + diceThrown);
             while (!diceThrown)
             {
                 yield return new WaitForSeconds(0.1f);
@@ -224,51 +227,46 @@ public class GameManager : MonoBehaviour
 
             currentPlayer.ThrowDice();
 
-            Debug.Log("Ha acabado la accion?" + actionFinished);
             while (!actionFinished)
             {
                 yield return new WaitForSeconds(0.1f);
             }
             diceThrown = false;
             actionFinished = false;
-            Debug.Log("Ha fallado la pregunta? " + playerFailedQuestion);
             if (playerFailedQuestion)
             {
                 if (playerTurn == playersPlaying.Length - 1)
                 {
-                    Debug.Log("Cambio turno a 0");
                     playerTurn = 0;
                 }
                 else
                 {
-                    Debug.Log("Cambio turno a ++");
                     playerTurn++;
                 }
                 playerFailedQuestion = false;
             }
-            Debug.Log("Fin juego " + CheckIfGameEnded());
         } while (!CheckIfGameEnded());
+        GameOver();
+    }
+
+    private void GameOver()
+    {
+        winnerImage.sprite = winnerPlayer.GetSprite();
+        gameOverPanel.SetActive(true);
     }
 
     private bool CheckIfGameEnded()
     {
-        int playersThatFinishedTheGame = 0;
         for (int i = 0; i < playersPlaying.Length; i++)
         {
             if (playersPlaying[i].GetAlreadyFinish())
             {
-                playersThatFinishedTheGame++;
+                winnerPlayer = playersPlaying[i];
+                return true;
             }
         }
 
-        if (playersThatFinishedTheGame >= playersPlaying.Length - 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     public void ThrowDice()
@@ -290,10 +288,18 @@ public class GameManager : MonoBehaviour
 
     private void ActionFinished()
     {
-        Debug.Log("ActionFinished");
         actionFinished = true;
     }
 
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
     #endregion
 
     #region QUESTION_METHODS
