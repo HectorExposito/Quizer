@@ -190,9 +190,9 @@ public class Player : MonoBehaviour
 
     internal void ReduceMoney()
     {
-        if (cash > 200)
+        if (cash > GameManager.MONEY_FROM_DUEL)
         {
-            cash -= 200;
+            cash -= GameManager.MONEY_FROM_DUEL;
         }
         else
         {

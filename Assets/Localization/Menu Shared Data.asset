@@ -51,6 +51,10 @@ MonoBehaviour:
     m_Key: screenResolution
     m_Metadata:
       m_Items: []
+  - m_Id: 15152610704048128
+    m_Key: credits_programming
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -29,7 +29,7 @@ public class OptionsManager : MonoBehaviour
         {
             SetFxVolume();
         }
-        SetScreenSizeDropdown();
+        //SetScreenSizeDropdown();
         audioPlayer.SetMusicVolume();
         audioPlayer.SetFXVolume();
     }

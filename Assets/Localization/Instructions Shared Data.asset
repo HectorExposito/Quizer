@@ -35,6 +35,78 @@ MonoBehaviour:
     m_Key: Duel_button
     m_Metadata:
       m_Items: []
+  - m_Id: 5813024030932992
+    m_Key: Goal_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813184354009088
+    m_Key: Goal_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813222723502080
+    m_Key: Goal_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813244378693632
+    m_Key: Goal_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813263819292672
+    m_Key: Goal_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813282307784704
+    m_Key: Goal_6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813321826516992
+    m_Key: Turns_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813338217857024
+    m_Key: Turns_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813363211714560
+    m_Key: Squares_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813396917141504
+    m_Key: Squares_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813409089011712
+    m_Key: Squares_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813448674852864
+    m_Key: Squares_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813463925342208
+    m_Key: Squares_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813478362136576
+    m_Key: Squares_6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813495340679168
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813513829171200
+    m_Key: Duels_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813533198467072
+    m_Key: Duels_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813552668426240
+    m_Key: Duels_3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

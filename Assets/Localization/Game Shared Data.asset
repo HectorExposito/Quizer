@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: mainMenu
     m_Metadata:
       m_Items: []
+  - m_Id: 15150940733521920
+    m_Key: playerPlaying
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

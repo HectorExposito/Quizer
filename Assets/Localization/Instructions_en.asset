@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: a0c5b0fd78a362d49af37589ea1e13e6, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 3894796172405506048
   m_TableData:
   - m_Id: 10316890112
     m_Localized: RETURN
@@ -38,6 +39,110 @@ MonoBehaviour:
     m_Localized: DUELS
     m_Metadata:
       m_Items: []
+  - m_Id: 5813024030932992
+    m_Localized: 'The objective of the game is to fill your shelf with all the items;
+      the first player to achieve this, wins.
+
+
+
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813184354009088
+    m_Localized: To obtain the items, you must land on the shop squares and have
+      money. Then, you have to answer the question correctly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813222723502080
+    m_Localized: To obtain the necessary money, you need to land on a question square
+      and answer the corresponding question correctly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813244378693632
+    m_Localized: 'There are two types of money: saved money, represented by the wallet,
+      and cash, represented by the bills. Everyone starts with $200 saved.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813263819292672
+    m_Localized: "\rEach player has an inventory in which they can carry up to 6
+      items. Once the inventory is full, they cannot buy more items."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813282307784704
+    m_Localized: "\rTo complete the shelf, you must land on your base. At that moment,
+      your inventory will be emptied, and you will save your cash."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813321826516992
+    m_Localized: 'The turns are always played in the same order: yellow player, red
+      player, green player, and blue player.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813338217857024
+    m_Localized: "\rA player can play on their turn until they fail a question, whether
+      it's on a question square, in the shop, or during a duel."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813363211714560
+    m_Localized: 'There are 3 types of squares on the board: question squares, shop
+      squares, and base squares.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813396917141504
+    m_Localized: "\rIf a player lands on the question square, they will have to answer
+      a question from the corresponding category; if they answer correctly, they
+      will earn $50."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813409089011712
+    m_Localized: 'The categories are as follows: blue for geography, orange for sports,
+      yellow for history, green for science, purple for art, and pink for entertainment.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813448674852864
+    m_Localized: "\rIf a player lands on a shop square, they can buy an item as long
+      as they have $200, combining both cash and saved money. In case they have money
+      in both, cash will be spent first."
+    m_Metadata:
+      m_Items:
+      - rid: 3894796172405506048
+  - m_Id: 5813463925342208
+    m_Localized: "\rIf the player can buy an item, they must decide which item to
+      purchase. Then, they have to answer a question of the corresponding category.
+      If they answer correctly, they get the item; if they fail, they don't lose
+      the money but do lose the turn."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813478362136576
+    m_Localized: "\rIf a player lands on their base square, they will empty their
+      inventory and cash."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813513829171200
+    m_Localized: "\rIf a player lands on a question square where one or more players
+      are already present, a duel begins. The last player to land will decide which
+      player they want to steal from."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813533198467072
+    m_Localized: Once chosen, the player will decide whether they want to steal an
+      item or money from that player. If they choose to steal an item, they must
+      decide which one. If they choose to steal money, the money at stake will be
+      $100.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813552668426240
+    m_Localized: After choosing, they will be asked a question based on the category
+      of the square they are on. If they answer correctly, they will steal what they
+      asked for. If they fail, they will lose their turn.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3894796172405506048
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00402fff4ca71400

@@ -39,11 +39,13 @@ public class GameManager : MonoBehaviour
     private bool waitingForPlayerToSelectAnItem;
     private Player playerToCompete;
     private Player winnerPlayer;
-    private const int MONEY_FOR_CORRECT_ANSWER = 200;
+    private const int MONEY_FOR_CORRECT_ANSWER = 50;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject noMoneyPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Image winnerImage;
+    [SerializeField] private Image playerPlayingImage;
+    [SerializeField] private GameObject playerPlayingPanel;
     #endregion
 
     #region DUEL_VARIABLES
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     private int priceChosen; //-1-> No price chosen  0->Money  1->Item
     private int itemChosen;
     private bool duelQuestion;
+    public const int MONEY_FROM_DUEL = 100;
     private Player.Item itemToCompete;
     [SerializeField] private GameObject chooseRivalPanel;
     [SerializeField] private GameObject choosePricePanel;
@@ -220,6 +223,7 @@ public class GameManager : MonoBehaviour
         do
         {
             currentPlayer = playersPlaying[playerTurn];
+            playerPlayingImage.sprite = currentPlayer.GetSprite();
             while (!diceThrown)
             {
                 yield return new WaitForSeconds(0.1f);
@@ -306,6 +310,7 @@ public class GameManager : MonoBehaviour
     //It selects the question to ask according to the category it receives and then it asks it to the player
     public void AskQuestion(Square.QuestionCategory questionCategory)
     {
+        playerPlayingPanel.SetActive(false);
         audioPlayer.PlayQuestionMusic();
         Question questionToAsk = null;
         int num;
@@ -318,27 +323,27 @@ public class GameManager : MonoBehaviour
                 //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.SPORTS:
-                num = UnityEngine.Random.Range(0, questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[1].Count);
                 questionToAsk = questions[1][num];
                 //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.SCIENCE:
-                num = UnityEngine.Random.Range(0, questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[2].Count);
                 questionToAsk = questions[2][num];
                 //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.GEOGRAPHY:
-                num = UnityEngine.Random.Range(0, questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[3].Count);
                 questionToAsk = questions[3][num];
                 //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.ART:
-                num = UnityEngine.Random.Range(0, questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[4].Count);
                 questionToAsk = questions[4][num];
                 //questionToAsk = questions[0][0];
                 break;
             case Square.QuestionCategory.ENTERTAINMENT:
-                num = UnityEngine.Random.Range(0, questions[0].Count);
+                num = UnityEngine.Random.Range(0, questions[5].Count);
                 questionToAsk = questions[5][num];
                 //questionToAsk = questions[0][0];
                 break;
@@ -428,6 +433,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeClosingPanel);
         questionsPanel.SetActive(false);
         audioPlayer.PlayGameMusic();
+        playerPlayingPanel.SetActive(true);
     }
     #endregion
 
@@ -638,9 +644,9 @@ public class GameManager : MonoBehaviour
     {
         if (priceChosen == 0)
         {
-            if (playerToCompete.GetCash() > 200)
+            if (playerToCompete.GetCash() > MONEY_FROM_DUEL)
             {
-                currentPlayer.ReceiveMoney(200);
+                currentPlayer.ReceiveMoney(MONEY_FROM_DUEL);
             }
             else
             {
@@ -675,7 +681,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayer.GetTotalMoney() >= 200)
         {
-            StartCoroutine(ShopCoroutine());
+            ShopPanel();
         }
         else
         {
@@ -683,17 +689,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShopCoroutine()
+    public void ShopPanel()
     {
         shopPanel.SetActive(true);
         waitingForPlayerToSelectAnItem = true;
-        yield return new WaitForSeconds(15f);
-        if (waitingForPlayerToSelectAnItem)
-        {
-            shopPanel.SetActive(false);
-            Debug.Log("SHOP ACTION FINISHED");
-            ActionFinished();
-        }
+        //yield return new WaitForSeconds(15f);
+        //if (waitingForPlayerToSelectAnItem)
+        //{
+        //    shopPanel.SetActive(false);
+        //    Debug.Log("SHOP ACTION FINISHED");
+        //    ActionFinished();
+        //}
     }
 
     IEnumerator ShowNoMoneyPanel()
@@ -788,7 +794,7 @@ public class GameManager : MonoBehaviour
         }
         canBuyItem = 0;
 
-        //ActionFinished();
+        ActionFinished();
     }
 
     #endregion

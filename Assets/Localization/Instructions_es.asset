@@ -38,6 +38,100 @@ MonoBehaviour:
     m_Localized: DUELOS
     m_Metadata:
       m_Items: []
+  - m_Id: 5813024030932992
+    m_Localized: "El objetivo del juego es completar tu estanter\xEDa con todos los
+      objetos; el primer jugador que lo consiga, gana."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813184354009088
+    m_Localized: "Para conseguir los objetos, deber\xE1s caer en las casillas de
+      tienda y tener dinero. Despu\xE9s, tienes que acertar la pregunta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813222723502080
+    m_Localized: Para conseguir el dinero necesario, necesitas caer en una casilla
+      de pregunta y acertar la pregunta correspondiente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813244378693632
+    m_Localized: 'Hay dos tipos de dinero: el dinero ahorrado, representado con la
+      cartera, y el dinero en efectivo, representado con los billetes. Todos comienzan
+      con $200 ahorrados.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813263819292672
+    m_Localized: "Cada jugador tiene un inventario en el cual puede llevar hasta
+      6 objetos. Una vez que el inventario est\xE9 lleno, no podr\xE1 comprar m\xE1s
+      objetos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813282307784704
+    m_Localized: "Para completar la estanter\xEDa, debes caer en tu base. En ese
+      momento, se vaciar\xE1 tu inventario y guardar\xE1s tu dinero en efectivo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813321826516992
+    m_Localized: 'Los turnos siempre se juegan en el mismo orden: jugador amarillo,
+      jugador rojo, jugador verde y jugador azul.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813338217857024
+    m_Localized: Un jugador puede jugar en su turno hasta que falle una pregunta,
+      ya sea en una casilla de pregunta, en la tienda o durante un duelo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813363211714560
+    m_Localized: 'Hay 3 tipos de casillas en el tablero: casillas de pregunta, casillas
+      de tienda y casillas de base.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813396917141504
+    m_Localized: "Si un jugador cae en la casilla de pregunta, tendr\xE1 que responder
+      una pregunta de la categor\xEDa correspondiente; si la acierta, ganar\xE1 50$."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813409089011712
+    m_Localized: "Las categor\xEDas son las siguientes: azul para geograf\xEDa, naranja
+      para deporte, amarillo para historia, verde para ciencia, morado para arte
+      y rosa para entretenimiento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813448674852864
+    m_Localized: "Si un jugador cae en una casilla de tienda, podr\xE1 comprar un
+      objeto siempre que tenga 200$ sumando el dinero en efectivo y el ahorrado.
+      En caso de tener dinero en ambos, se gastar\xE1 primero el dinero en efectivo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813463925342208
+    m_Localized: "Si el jugador puede comprar un objeto, debe decidir qu\xE9 objeto
+      comprar. Despu\xE9s, tiene que contestar una pregunta de la categor\xEDa correspondiente.
+      Si acierta, se lleva el objeto; si falla, no pierde el dinero pero s\xED el
+      turno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813478362136576
+    m_Localized: "Si un jugador cae en su casilla de base, vaciar\xE1 su inventario
+      y su dinero en efectivo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813513829171200
+    m_Localized: "Si un jugador cae en una casilla de pregunta donde ya hay uno o
+      m\xE1s jugadores, comenzar\xE1 un duelo. El \xFAltimo jugador en caer decidir\xE1
+      a qu\xE9 jugador quiere robar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813533198467072
+    m_Localized: "Una vez elegido, el jugador decidir\xE1 si quiere robar un objeto
+      o dinero a ese jugador. Si elige robar un objeto, debe decidir cu\xE1l. Si
+      elige robar dinero, el dinero que habr\xE1 en juego ser\xE1 100$."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5813552668426240
+    m_Localized: "Despu\xE9s de elegir, se le har\xE1 una pregunta basada en la categor\xEDa
+      de la casilla en la que se encuentra. Si responde correctamente, robar\xE1
+      lo que haya pedido. Si falla, perder\xE1 el turno."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

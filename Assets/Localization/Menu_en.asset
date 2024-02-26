@@ -54,6 +54,10 @@ MonoBehaviour:
     m_Localized: RESOLUTION
     m_Metadata:
       m_Items: []
+  - m_Id: 15152610704048128
+    m_Localized: "PROGRAMMING AND GAME DESIGN:\nH\xC9CTOR EXP\xD3SITO"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

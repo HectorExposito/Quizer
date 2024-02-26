@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class FileManager : MonoBehaviour
 {
-    public string file="preguntas.tsv";
+    public string fileSpanish="preguntas.tsv";
+    public string fileEnglish = "questions.tsv";
     string filePath;
-    void Start()
-    {
-    }
-
+    
     public List<string[]> ReadFile()
     {
         List<string[]> questions=new List<string[]>();
@@ -36,7 +34,15 @@ public class FileManager : MonoBehaviour
 
     private void GetPath()
     {
-        filePath= Application.streamingAssetsPath + "/"+file;
+        if (PlayerPrefs.GetInt("Lenguage")==0)
+        {
+            filePath = Application.streamingAssetsPath + "/" + fileEnglish;
+        }
+        else
+        {
+            filePath = Application.streamingAssetsPath + "/" + fileSpanish;
+        }
+        
     }
 
     // Update is called once per frame

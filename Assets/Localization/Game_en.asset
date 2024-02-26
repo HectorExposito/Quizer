@@ -59,6 +59,10 @@ MonoBehaviour:
     m_Localized: MAIN MENU
     m_Metadata:
       m_Items: []
+  - m_Id: 15150940733521920
+    m_Localized: 'NOW PLAYING:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
