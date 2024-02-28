@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Square : MonoBehaviour
 {
-    [SerializeField] private Square nextSquare;
-    [SerializeField] private SquareType squareType;
-    [SerializeField] private QuestionCategory questionCategory;
-    [SerializeField] private BaseColor baseColor;
-    [SerializeField] private List<Player> playersOnSquare;
+    [SerializeField] private Square nextSquare;//Points to next square the player has to move
+    [SerializeField] private SquareType squareType;//Type of square (base,shop,question)
+    [SerializeField] private QuestionCategory questionCategory;//Category of the question (sports, art...)
+    [SerializeField] private BaseColor baseColor;//Player that has that base
+    [SerializeField] private List<Player> playersOnSquare;//Players that are actually on the sqaure
     GameManager gm;
     private void Start()
     {
@@ -30,6 +30,8 @@ public class Square : MonoBehaviour
     {
         YELLOW,RED,GREEN,BLUE,NONE
     }
+
+    //Depending of the sqauretype it will do an action
     public void SquareAction()
     {
         switch (squareType)
@@ -75,18 +77,16 @@ public class Square : MonoBehaviour
         return baseColor;
     }
 
+    //Add a player to the list of players on the square
     public void AddPlayer(Player player)
     {
-        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
         playersOnSquare.Add(player);
-        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
     }
 
+    //Removes a player from the list of players on the square
     public void RemovePlayer(Player player)
     {
-        Debug.Log("jugadores en casilla "+playersOnSquare.Count);
         playersOnSquare.Remove(player);
-        Debug.Log("jugadores en casilla " + playersOnSquare.Count);
     }
     
 }

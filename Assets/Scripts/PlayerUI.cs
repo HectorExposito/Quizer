@@ -3,28 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] private Sprite[] itemSprites;
-    [SerializeField] private GameObject[] itemImages;
-    [SerializeField] private Image[] inventoryItemImages;
-    [SerializeField] private GameObject inventory;
-    [SerializeField] private TMP_Text savedMoneyText;
-    [SerializeField] private TMP_Text cashText;
+    [SerializeField] private Sprite[] itemSprites;//References the item images such as basketball or book
+    [SerializeField] private GameObject[] itemImages;//References the place where itemSprites are going to be shown on the shelf
+    [SerializeField] private Image[] inventoryItemImages;//References the place where itemSprites are going to be shown on the inventory
+    [SerializeField] private GameObject inventory;//Player's inventory
+    [SerializeField] private TMP_Text savedMoneyText;//Text that shows the money saved by the player
+    [SerializeField] private TMP_Text cashText;//Text that shows the cash that the player has
+
+    #region ANIMATION_VARIABLES
+    [SerializeField] private Image[] item1Animation;
+    [SerializeField] private Image[] item2Animation;
+    [SerializeField] private Image[] item3Animation;
+    [SerializeField] private Image[] item4Animation;
+    [SerializeField] private Image[] item5Animation;
+    [SerializeField] private Image[] item6Animation;
+    private float rotationSpeed = 5f;
+    private const float ANIMATION_DURATION = 2f;
+    #endregion
+
     private bool alreadyShowingInventory;
-    
+
+    //Changes the cash text on the players UI
     public void UpdateCashText(int cash)
     {
         cashText.text = cash + " $";
     }
 
+    //Changes the saved money text on the players UI
     public void UpdateSavedMoneyText(int savedMoney)
     {
         savedMoneyText.text = savedMoney + " $";
     }
 
+    //Activates the images of the items that the player has saved on his shelf
     internal void UpdateItemList(Player.Item[] itemsOnBase)
     {
         for (int i = 0; i < itemsOnBase.Length; i++)
@@ -33,26 +47,65 @@ public class PlayerUI : MonoBehaviour
             {
                 case Player.Item.SPORTS:
                     itemImages[0].SetActive(true);
+                    DoItemSavedAnimation(item1Animation);
                     break;
                 case Player.Item.ART:
                     itemImages[1].SetActive(true);
+                    DoItemSavedAnimation(item2Animation);
                     break;
                 case Player.Item.HISTORY:
                     itemImages[2].SetActive(true);
+                    DoItemSavedAnimation(item3Animation);
                     break;
                 case Player.Item.ENTERTAINMENT:
                     itemImages[3].SetActive(true);
+                    DoItemSavedAnimation(item4Animation);
                     break;
                 case Player.Item.SCIENCE:
                     itemImages[4].SetActive(true);
+                    DoItemSavedAnimation(item5Animation);
                     break;
                 case Player.Item.GEOGRAPHY:
                     itemImages[5].SetActive(true);
+                    DoItemSavedAnimation(item6Animation);
                     break;
             }
         }
     }
 
+    //Starts the animation for when an item is saved
+    public void DoItemSavedAnimation(Image[] itemAnimation)
+    {
+        Debug.Log("animacion");
+        if (itemAnimation[0].gameObject.activeSelf == false && itemAnimation[1].gameObject.activeSelf == false)
+        {
+            itemAnimation[0].gameObject.SetActive(true);
+            itemAnimation[1].gameObject.SetActive(true);
+        }
+        StartCoroutine(DoItemSavedAnimationCoroutine(itemAnimation,0));
+
+    }
+
+    private IEnumerator DoItemSavedAnimationCoroutine(Image[] itemAnimation,float actualAnimationDuration)
+    {
+        Debug.Log("animacion corutina");
+        itemAnimation[0].transform.Rotate(new Vector3(0, 0, -rotationSpeed));
+        itemAnimation[1].transform.Rotate(new Vector3(0, 0, rotationSpeed));
+        yield return new WaitForSeconds(0.05f);
+        actualAnimationDuration += 0.05f;
+        Debug.Log(actualAnimationDuration + " ->" + ANIMATION_DURATION);
+        if (actualAnimationDuration < ANIMATION_DURATION)
+        {
+            StartCoroutine(DoItemSavedAnimationCoroutine(itemAnimation, actualAnimationDuration));
+        }
+        else
+        {
+            itemAnimation[0].gameObject.SetActive(false);
+            itemAnimation[1].gameObject.SetActive(false);
+        }
+    }
+
+    //Changes the inventory images, showing the ones that the player actually has
     public void UpdateInventoryImages(List<Player.Item> itemsOnInventory)
     {
         for (int i = 0; i < 6; i++)
@@ -98,7 +151,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        
+        //If the player clicks on top of a piece, it will show the inventory of that player
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -113,6 +166,7 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    //Shows the inventory
     public void ShowInventory()
     {
         alreadyShowingInventory = true;
