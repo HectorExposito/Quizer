@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
 
     private const int MAX_MOVEMENT=7;//Biggest number that the player can obtain from the dice +1
+    private const int ITEMS_PRICE = 200;
     private int movement;//Number obtained from the dice
     private Collider2D playerCollider;
     [SerializeField]private Square playerBase;
@@ -50,12 +51,15 @@ public class Player : MonoBehaviour
         }
         itemsOnInventory = new List<Item>();
         actualSquare.AddPlayer(this);
+        
     }
+
+
     //Generates a random number that represents the square the player is going to move
     public void ThrowDice()
     {
         movement = UnityEngine.Random.Range(1, MAX_MOVEMENT);
-        //movement = 2;
+        //movement =4;
         waitingForDiceAnimation = true;
         dice.DiceAnimation(movement);
         actualSquare.RemovePlayer(this);
@@ -79,7 +83,7 @@ public class Player : MonoBehaviour
         //Waits until the dice animation is over
         if (waitingForDiceAnimation)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(2.5f);
             waitingForDiceAnimation = false;
         }
         //Moves the player to the next square
@@ -135,15 +139,15 @@ public class Player : MonoBehaviour
     internal void BuyItem(Item item)
     {
         itemsOnInventory.Add(item);
-        int moneyToPay = 200;
-        if (cash>=200)
+        int moneyToPay = ITEMS_PRICE;
+        if (cash>= ITEMS_PRICE)
         {
-            cash -= 200;
+            cash -= ITEMS_PRICE;
         }
-        else
+        else if(cash+savedMoney>= ITEMS_PRICE)
         {
-            cash = 0;
             moneyToPay -= cash;
+            cash = 0;
             savedMoney -= moneyToPay;
         }
         playerUI.UpdateCashText(cash);
@@ -183,11 +187,23 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+        CheckItemsOnBase();
         itemsOnInventory.Clear();
         playerUI.UpdateItemList(itemsOnBase);
         playerUI.UpdateInventoryImages(itemsOnInventory);
     }
 
+    private void CheckItemsOnBase()
+    {
+        for (int i = 0; i < itemsOnBase.Length; i++)
+        {
+            if (itemsOnBase[i] == Item.NONE)
+            {
+                return;
+            }
+        }
+        alreadyFinish = true;
+    }
     internal void ReduceMoney()
     {
         if (cash > GameManager.MONEY_FROM_DUEL)

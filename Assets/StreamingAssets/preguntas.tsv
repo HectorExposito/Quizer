@@ -98,7 +98,7 @@ Historia	¿Qué inventó Alfred Nobel?	La dinamita	La electricidad	La pólvora	L
 Historia	¿Qué descubrió Howard Carter en 1922?	La tumba de Tutankamón	Las líneas de Nazca	Los guerreros de Terracota	La piedra Rosetta
 Historia	¿Quién corrió desnudo por las calles gritando "Eureka"?	Arquímedes	Platón	Sócrates	Aristóteles
 Historia	¿En qué ciudad nació Alexander Graham Bell en 1847?	Edimburgo	Londres	Dublín	Cardiff
-Deporte	¿Cuántos anillos tiene la bandera olímpica?	Cinco	7	4	6
+Deporte	¿Cuántos anillos tiene la bandera olímpica?	5	7	4	6
 Deporte	¿Quién usaría un mashie niblick?	Golfista	Esgrimista	Tenista	Paracaidista
 Deporte	¿Quién fue el primer hombre en correr una milla en menos de cuatro minutos?	Roger Bannister	Josy Barthel	Jakob Ingebrigtsen	Arnold Jackson
 Deporte	¿En qué deporte competía Giacomo Agostini?	Motociclismo	Automovilismo	Fútbol	Baloncesto
@@ -286,7 +286,7 @@ Ciencias	¿Cuál de estos países no ha adoptado el sistema métrico?	Estados Un
 Ciencias	¿Qué es un ovíparo?	Un animal que nace de un huevo	Un animal que se alimenta de huevos	Un animal con forma de huevo	Un animal que roba huevos
 Ciencias	¿Qué enfermedad sufría Stephen Hawking?	ELA	VIH	PLS	Alzheimer
 Ciencias	¿Cuántos corazones tiene un pulpo?	3	1	2	4
-Ciencias	¿Cuál es el mamífero carnívoro más pequeño del mundo?	La comadreja	Ratón	Garduña	Gineta
+Ciencias	¿Cuál es el mamífero carnívoro más pequeño del mundo?	Comadreja	Ratón	Garduña	Gineta
 Ciencias	¿Para que sirve un barómetro?	Para medir la presión atmosférica	Para medir la velocidad del viento	Para medir la temperatura	Para medir la radioactividad
 Ciencias	¿Qué ave es la más pequeña del mundo?	El colibrí	El pardalote	El reyezuelo sencilo	La cistícola
 Ciencias	¿Dónde producimos la insulina?	En el páncreas	En el hígado	En el bazo	En el estómago
@@ -332,7 +332,7 @@ Geografia	¿En qué lugar está el Opera House?	En Sídney	En Valenica	En Viena	
 Geografia	¿Dónde está ubicado el volcán Vesubio?	Italia	Grecia	Islandia	Turquía
 Geografia	¿En qué país está Capadocia?	En Turquía	En Italia	En Albania	En Suiza
 Geografia	¿Cuál es el estado más pequeño de Estados Unidos?	Rhode Island	Delaware	Connecticut	Nueva Jersey
-Geografia	¿Cuál es el río más ancho del mundo?	El río de la Plata	El Amzonas	El Nilo	El Danubio
+Geografia	¿Cuál es el río más ancho del mundo?	El río de la Plata	El Amazonas	El Nilo	El Danubio
 Geografia	¿Qué ciudad tuvo una vez el nombre de Constantinopla?	Estambul	Roma	Atenas	Damasco
 Geografia	¿Qué río atraviesa París?	El Sena	El Rin	El Loira	El Ródano
 Geografia	¿En qué país está el sitio arqueológico de Petra?	En Jordania	En Irak	En Irán	En Israel
@@ -389,8 +389,8 @@ Geografia	¿Qué país es el más grande de Sudamérica?	Brasil	Argentina	Chile	
 Geografia	¿Cuál es el punto más alto de África?	El Monte Kilimanjaro	El Monte Kenia	El Monte Stanley	El Monte Meru
 Geografia	¿Qué río forma la frontera entre Polonia y Alemania?	El río Oder	El río Danubio	El río Támesis	El río Po
 Geografia	¿Cuál es el mar que se encuentra al norte de África?	El mar Mediterráneo	El mar arábigo	El mar Caribe	El mar del Norte
-Geografia	¿Cuál es el río más caudaloso del mundo?	ElAmazonas	El Nilo	El Río de la Plata	El Danubio
-Geografia	¿Cuál es el río más caudaloso de Europa?	ElVolga	El Danubio	El Ebro	El Rin
+Geografia	¿Cuál es el río más caudaloso del mundo?	El Amazonas	El Nilo	El Río de la Plata	El Danubio
+Geografia	¿Cuál es el río más caudaloso de Europa?	El Volga	El Danubio	El Ebro	El Rin
 Geografia	¿Cuál es el río más largo de Asia?	El río Yangtze	El río Mekong	El río Amarillo	El río Indo
 Geografia	¿En qué océano se encuentra la isla de Madagascar?	Océano Índico	Océano Pacífico	Océano Atlántico	Océano Antártico
 Geografia	¿Cuál es el río más largo de Oceanía?	El río Murray	El río Darling	El río Murrumbidgee	El río Kiewa
@@ -500,104 +500,104 @@ Arte	¿Cuál es el nombre de la boy band estadounidense que incluía a Nick Cart
 Arte	¿Cuál de estas cantantes no era parte de las Spice Girls?	Mary Wilson	Emma Bunton	Victoria Beckham	Mel B
 Arte	¿Qué cantante colombiano lanzó el éxito Mi Gente en 2017?	J Balvin	Maluma	Carlos Vives	Sebastián Yatra
 Arte	¿Qué banda lanzó el álbum American Idiot en 2004?	Green Day	Sum 41	Blink 182	My Chemical Romance
-Entretenimineto	¿Quién dirigió 'Ciudadano Kane'?	Orson Wells	John Ford	Roberto Rossellini	Howard Hawks
-Entretenimineto	¿Quién dirigió 'Origen'?	Christopher Nolan	Steven Spielberg	David Lynch	Clint Eastwood
-Entretenimineto	¿Por qué película ganó Leonardo DiCaprio su primer Óscar?	El Renacido	Titanic	Inception	El lobo de Wall Street
-Entretenimineto	¿Quién protagonizó la película 'El Pianista'?	Adrien Brody	Willem Dafoe	Owen Wilson	Jason Schwartzman
-Entretenimineto	¿Cuáles  película con más Óscars de la historia?	Titanic', 'Ben-Hur' y ' El Señor de los Anillos: El retorno del Rey'	Titanic', 'Ben-Hur' y el 'Lo que el viento se llevó'	Titanic', 'Lo que el viento se llevó' y 'El Señor de los anillos: El retorno del rey'	El Señor de los Anillos:el retorno del Rey', 'Ben-Hur' y 'Lo que el viento se llevó'
-Entretenimineto	¿Cuál fue la primera película de Disney?	Blancanieves y los siete enanitos	Pinocho	Fantasía	Dumbo
-Entretenimineto	¿Cuántas películas de 'Harry Potter' se han hecho?	8	7	6	9
-Entretenimineto	¿Quién ha protagonizado la saga de 'Indiana Jones'?	Harrison Ford	Daniel Craig	Quentin Tarantino	Mads Mikkelsen
-Entretenimineto	¿Qué actor español ganó un Óscar por 'No es país para viejos'?	Javier Bardem	Luis Tosar	Alfredo Landa	Javier Cámara
-Entretenimineto	¿Qué actriz protagonizó 'Desayuno con diamantes'?	Audrey Hepburn	Sharon Tate	Judy Garland	Raquel Weich
-Entretenimineto	¿Quién es el enemigo más famoso de Batman?	El Joker	El duende verde	Loki	Lex Luthor
-Entretenimineto	¿Quién interpretó a Hitler en 'El gran dictador'?	Charles Chaplin	James Dean	Clint Eastwood	Marlon Brando
-Entretenimineto	¿Quién dirigió la trilogía de 'El Padrino'?	Francis Ford Coppola	Brian de Palma	Martin Scorsese	Robert de Niro
-Entretenimineto	¿En qué ciudad vive el mago de Oz?	La ciudad Esmeralda	La ciudad Diamante	La ciudad Dorada	La ciudad Brillante
-Entretenimineto	¿Qué actriz ha ganado el mayor número de Premios Óscar?	Katharine Hepburn	Maryl Streep	Ingrid Bergman	Frances McDormand
-Entretenimineto	¿A qué año viajan Marty y Doc en 'Regreso al futuro II'?	2015	1985	2020	1955
-Entretenimineto	¿Qué película de terror fue el debut de Johnny Depp?	Pesadilla en la Elm Street	El Resplandor	Scream	La mosca
-Entretenimineto	¿En qué película se escucha la frase "En ocasiones veo muertos"?	El Sexto Sentido	Los otros	El protegido	Split
-Entretenimineto	¿Quién dirigió 'Charada'?	Alfred Hitchcock	Stanley Kubrick	Ingmar Bergman	Billy Wilder
-Entretenimineto	¿Quién interpretó a Hermione Granger en 'Harry Potter'?	Emma Watson	Bonnie Wright	Evanna Lynch	Helena Bonham Carter
-Entretenimineto	¿En qué ciudad se ambienta 'Cazafantasmas'?	En Nueva York	En San Francisco	En Hollywood	En Seattle
-Entretenimineto	¿Qué actriz encarnó a la hermana de Elliot en 'E.T.'?	Drew Barrymore	Erika Eleniak	Dee Wallace-Stone	Mary Stein
-Entretenimineto	¿En qué año se estreno 'Eduardo Manostijeras'?	1990	1987	1994	1998
-Entretenimineto	¿Quién dirigió 'Memorias de África'?	Sydney Pollack	Anthony Mingella	Caroline Link	Steven Spielberg
-Entretenimineto	¿A qué saga pertenece el personaje de Katniss Everdeen?	Los Juegos del Hambre	Divergente	El corredor del laberinto	Crepúsculo
-Entretenimineto	¿A qué mítica actriz interpreta Ana de Armas en 'Blonde'?	Marilyn Monroe	Jayne Mansfield	Jan Sterling	Cleo Moore
-Entretenimineto	¿En qué año se estrenó 'La naranja mecánica'?	1971	1956	1977	1964
-Entretenimineto	¿Dónde se rodó 'Casablanca'?	En Estados Unidos	En Marruecos	En Francia	En Reino Unido
-Entretenimineto	¿Por qué película ganó Penélope Cruz su primer Oscar?	Vicky Cristina Barcelona	Jamón, Jamón	Volver	Vanilla Sky
-Entretenimineto	¿Quién interpretó a Miércoles Addams en la peli de los 90?	Christina Ricci	Jenna Ortega	Lisa Loring	Rachel Potter
-Entretenimineto	¿Cómo se llamaba el planeta del que venía Alf?	Melmac	Gallifrey	Namek	Krypton
-Entretenimineto	¿Cómo se llama la mujer de Shrek?	Fiona	Finea	Felicia	Flora
-Entretenimineto	En la película 'Mascotas', ¿qué clase de animales eran Max y Duke?	Perros	Gatos	Loros	Hamsters
-Entretenimineto	¿Quién interpretó a Eduardo Manostijeras?	Johnny Depp	Leonardo DiCapprio	Brad Pitt	Matt Damon
-Entretenimineto	¿Quién protagonizó la película 'Gladiator'?	Russell Crowe	Joaquin Phoenix	Richard Harris	Paul Mescal
-Entretenimineto	¿Qué actor interpreta al personaje de Thor en el Universo Cinematográfico de Marvel?	Chris Hemsworth	Liam Hemsworth	Chris Evans	Robert Downey Jr
-Entretenimineto	¿En qué país nació la actriz Margot Robbie?	Australia	Estados Unidos	Reino Unido	Nueva Zelanda
-Entretenimineto	¿De dónde es Emily Cooper, la protagonista de ‘Emily in Paris’?	De Chicago	De Los Ángeles	De Toronto	De Las Vegas
-Entretenimineto	¿Cómo se llama el personaje principal de ‘You’?	Joe Goldberg	Theo Engler	Adam Pratt	Forty Quinn
-Entretenimineto	¿Cuál fue la serie de Netflix más vista en 2020?	La Casa de Papel	Tiger King	Gambito de dama	Jugando con fuego
-Entretenimineto	¿Cuál es el parentesco de Monica y Ross en ‘Friends’?	Son hermanos	Son padre e hija	Son madre e hijo	Son primos
-Entretenimineto	¿Quién interpreta a Miércoles Addams en la serie de Netflix?	Jenna Ortega	Christina Ricci	Lisa Loring	Rachel Potter
-Entretenimineto	¿Cómo se llamaba el lobo de Jon Nieve?	Fantasma	Ventisca	Sevro	Sombra
-Entretenimineto	¿Qué título tenía Regé-Jean Page en ‘Los Bridgerton’?	Duque	Conde	Marqués	Vizconde
-Entretenimineto	¿Cuántos episodios tiene la serie ‘Gossip Girl’?	121	234	56	82
-Entretenimineto	¿Cómo se llama el protagonista de ‘Bola de Dragón’?	Goku	Luffy	Ichigo	Naruto
-Entretenimineto	¿Qué familia vive en la ciudad de Springfield?	Los Simpsons	Los Griffin	Los Smith	Los Banks
-Entretenimineto	¿Qué malvado brujo tiene un gato llamado Azrael?	Gargamel	Warlock	Jafar	Saruman
-Entretenimineto	¿De qué color es el pelo de Naruto?	Amarillo	Naranja	Gris	Negro
-Entretenimineto	¿De quiénes son amigos Pato, Elly, Pajaroto y Loula?	De Pocoyó	De Caillou	De Dora	De Martin Matin
-Entretenimineto	¿Cómo se llama la cabra que acompaña a Heidi?	Copito de Nieve	Amelio	Niebla	Bonita
-Entretenimineto	¿Quiénes crean el Club de la Canica?	Zipi y Zape	Mortadelo y Filemón	Zack y Cody	Heidi y Pedro
-Entretenimineto	¿De qué serie es popular el personaje de Michael Scofield?	Prison Break	Lost	The Walking Dead	Breaking Bad
-Entretenimineto	¿Qué actor interpretó a Pablo Escobar en la serie 'Narcos'?	Wagner Moura	Pedro Pascal	Diego Luna	Alberto Ammann
-Entretenimineto	¿A qué instituto van los personajes de ‘Élite’?	Las Encinas	Angel Guimera	El Zurbarán	7 Robles
-Entretenimineto	¿De qué serie es popular el personaje de Don Draper?	Mad Men	Los Soprano	Breaking Bad	The Wire
-Entretenimineto	¿Quién interpreta al personaje de Carrie Bradshaw en ‘Sexo en Nueva York’?	Sarah Jessica Parker	Kim Cattrall	Cynthia Nixon	Kristin Davis
-Entretenimineto	¿En qué serie española se dio a conocer la actriz Ana de Armas?	El Internado	Ana y los 7	La que se avecina	Aquí no hay quien viva
-Entretenimineto	¿En qué ciudad vive la familia Banks en ‘El Príncipe de Bel-Air’?	En Los Ángeles	En Dallas	En Miami	En Santa Cruz
-Entretenimineto	¿De qué serie es popular el personaje de Walter White?	Breaking Bad	Prison Break	Stranger Things	La casa de papel
-Entretenimineto	¿De qué serie es la popular expresión “Winter is coming"?	Juego de Tronos	Stranger Things	Lost	Narcos
-Entretenimineto	¿Cómo se llama el personaje de Úrsula Corberó en ‘La Casa de Papel’?	Tokio	Berlín	Río	Nairobi
-Entretenimineto	¿En qué serie se hicieron populares los personajes Eleven y Mike?	Stranger Things	Riverdale	Crónicas vampíricas	Supernatural
-Entretenimineto	¿Quién cantaba la sintonía de la serie ‘Los Serrano’?	Fran Perea	Despistaos	Sergio Dalma	Pignoise
-Entretenimineto	¿De qué serie es popular el personaje de Lorelai Gilmore?	Las chicas Gilmore	Gossip Girl	One Three Hill	Supernatural
-Entretenimineto	¿En qué ciudad transcurre la serie ‘La Casa de las Flores’?	Ciudad de México	Veracruz	Monterrey	Cancún
-Entretenimineto	¿En qué serie se hizo popular la actriz Elsa Pataky?	Al salir de clase	Los hombres de Paco	Física o química	El comisario
-Entretenimineto	¿Quién es el actor que interpreta a Jon Nieve en ‘Juego de Tronos’?	Kit Harington	Matt Smith	Jason Momoa	Peter Dinklage
-Entretenimineto	¿Quién interpretó a Daenerys Targaryen en la serie ‘Juego de Tronos’?	Emilia Clarke	Sophie Turner	Maisie Williams	Natalie Dormer
-Entretenimineto	¿De qué serie es popular el personaje de Jack Bauer?	24	Homeland	The Blacklist	Bones
-Entretenimineto	¿Qué instrumento toca Lisa Simpson?	El saxofón	El clarinete	El piano	La guitarra
-Entretenimineto	¿De qué serie es popular el personaje de Piper Chapman?	Orange is the New Black	Vis a vis	Poker face	Wentworth
-Entretenimineto	¿Qué actriz interpretó a Claire Underwood en la serie 'House of Cards'?	Robin Wright	Mad men	Mindhunter	Ozark
-Entretenimineto	¿Qué actor interpretó a Michael Scott en la serie 'The Office'?	Steve Carell	Rainn Wilson	John Krasinski	Ed Helms
-Entretenimineto	¿Qué actor interpretó a Tony Soprano en la serie 'Los Soprano'?	James Gandolfini	Michael Imperioli	Tony Sirico	Robert Iler
-Entretenimineto	¿Qué serie de televisión seguía a una familia adinerada en Denver?	Dinastía	Dallas	Gossip Girl	Empire
-Entretenimineto	¿En qué serie española se dio a conocer Javier Calvo?	Física o química	Los Serrano	El Internado	Élite
-Entretenimineto	¿Qué serie de televisión tenía el lema '¿Quién mató a Laura Palmer'?	Twin Peaks	True Detective	Colombo	On the air
-Entretenimineto	¿Cómo se llama el ‘spin-off’ de ‘Breaking Bad’?	Better Call Saul	Prison Break	The Walking Dead	Ozark
-Entretenimineto	¿En qué película un personaje llamado Dory ayuda a Marlin a encontrar a su hijo perdido?	Buscando a Nemo	Tarzán	El libro de la selva	Toy Story
-Entretenimineto	¿Qué actor protagonizó la trilogía original de Star Wars como Luke Skywalker?	Mark Hamill	Aiden Barton	Eric Bauza	Bob Bergen
-Entretenimineto	¿Cuál fue la película ganadora del Oscar a Mejor Película en 2020?	Parásitos	Todo a la vez en todas partes	Moonlight	Jojo Rabbit
-Entretenimineto	¿En qué película protagonizada por Robin Williams un joven utiliza un juego de mesa mágico del que sale un malvado cazador de la jungla?	Jumanji 	The Rocketeer	Toy Story	Goosebumps
-Entretenimineto	¿Qué película del Universo Cinematográfico de Marvel presenta a un grupo de superhéroes liderado por Star-Lord?	Guardianes de la Galaxia	Avengers:Endgame	Capitana Marvel	Ant-Man
-Entretenimineto	¿Qué actor ganó el Oscar a Mejor Actor en 2020?	Joaquin Phoenix	Antonio Banderas	Leonardo DiCaprio	Adam Driver
-Entretenimineto	¿Qué película de 1955 protagonizada por James Dean fue un gran éxito y se convirtió en un icono de la cultura popular?	Rebelde sin causa	Elvis	East of Eden	Gigante
-Entretenimineto	¿Cuál fue el título de la película que ganó el Oscar a Mejor Película en 1995?	Forrest Gump	Pulp Fiction	Cuatro bodas y un funeral	Quiz Show
-Entretenimineto	¿Cuál fue la película ganadora del Oscar a Mejor Película en 1972?	El Padrino	Cabaret	Defensa	Sounder
-Entretenimineto	¿Quién fue el director de la trilogía de El Señor de los Anillos?	Peter Jackson	James Cameron	Steven Spielberg	Gary Ross
-Entretenimineto	¿Qué película de 1941, dirigida y protagonizada por Orson Welles, es considerada una de las mejores películas de todos los tiempos?	Ciudadano Kane	La naranja mecánica	Casablanca	Vértigo
-Entretenimineto	¿Qué actor es conocido por su papel como Tony Stark en el Universo Cinematográfico de Marvel?	Robert Downey Jr	Chris Evans	Tom Holland	Mark Ruffalo
-Entretenimineto	¿Qué actriz española protagonizó la película "Volver" de 2006 dirigida por Pedro Almodóvar?	Penélope Cruz	Blanca Suárez	Elsa Pataky	Michelle Jenner
-Entretenimineto	¿Qué película española ganó el Oscar a Mejor Película Extranjera en 1993?	Belle Époque	Mar Adentro	El laberinto del fauno	Vicky Cristina Barcelona
-Entretenimineto	¿Cuál fue el nombre del personaje interpretado por Robert De Niro en la película Taxi Driver de 1976?	Travis Bickle	Fred Blake	Jack Byrnes	James Conway
-Entretenimineto	¿Qué actor ganó el Oscar a Mejor Actor en 1994?	Tom Hanks	Morgan Freeman	John Travolta	Paul Newman
-Entretenimineto	¿Cuántas categorías de premios existen en los premios Oscar?	23	15	21	34
-Entretenimineto	¿Qué película de 1939, protagonizada por Judy Garland, es considerada una de las mejores películas musicales de todos los tiempos?	El mago de Oz	Ha nacido una estrella	West Side Story	Grease
-Entretenimineto	¿Qué actriz ganó el Oscar a Mejor Actriz por su papel en La La Land en 2016?	Emma Stone	Natalie Portman	Meryl Streep	Ruth Negga
-Entretenimineto	¿Quién fue el director de la película La lista de Schindler de 1993?	Steven Spielberg	Roman Polanski	Quentin Trantino	Roberto Benigni
-Entretenimineto	¿Qué película de 2008, dirigida por Christopher Nolan, presenta la idea de los sueños compartidos?	Origen	Interstellar	Tenet	Insomnia
-Entretenimineto	¿Cuál fue el nombre del personaje interpretado por Tom Hanks en la película Náufrago de 2000?	Chuck Noland	Stan	Wilson	Albert Miller
+Entretenimiento	¿Quién dirigió 'Ciudadano Kane'?	Orson Wells	John Ford	Roberto Rossellini	Howard Hawks
+Entretenimiento	¿Quién dirigió 'Origen'?	Christopher Nolan	Steven Spielberg	David Lynch	Clint Eastwood
+Entretenimiento	¿Por qué película ganó Leonardo DiCaprio su primer Óscar?	El Renacido	Titanic	Inception	El lobo de Wall Street
+Entretenimiento	¿Quién protagonizó la película 'El Pianista'?	Adrien Brody	Willem Dafoe	Owen Wilson	Jason Schwartzman
+Entretenimiento	¿Cuáles  película con más Óscars de la historia?	Titanic', 'Ben-Hur' y ' El Señor de los Anillos: El retorno del Rey'	Titanic', 'Ben-Hur' y el 'Lo que el viento se llevó'	Titanic', 'Lo que el viento se llevó' y 'El Señor de los anillos: El retorno del rey'	El Señor de los Anillos:el retorno del Rey', 'Ben-Hur' y 'Lo que el viento se llevó'
+Entretenimiento	¿Cuál fue la primera película de Disney?	Blancanieves y los siete enanitos	Pinocho	Fantasía	Dumbo
+Entretenimiento	¿Cuántas películas de 'Harry Potter' se han hecho?	8	7	6	9
+Entretenimiento	¿Quién ha protagonizado la saga de 'Indiana Jones'?	Harrison Ford	Daniel Craig	Quentin Tarantino	Mads Mikkelsen
+Entretenimiento	¿Qué actor español ganó un Óscar por 'No es país para viejos'?	Javier Bardem	Luis Tosar	Alfredo Landa	Javier Cámara
+Entretenimiento	¿Qué actriz protagonizó 'Desayuno con diamantes'?	Audrey Hepburn	Sharon Tate	Judy Garland	Raquel Weich
+Entretenimiento	¿Quién es el enemigo más famoso de Batman?	El Joker	El duende verde	Loki	Lex Luthor
+Entretenimiento	¿Quién interpretó a Hitler en 'El gran dictador'?	Charles Chaplin	James Dean	Clint Eastwood	Marlon Brando
+Entretenimiento	¿Quién dirigió la trilogía de 'El Padrino'?	Francis Ford Coppola	Brian de Palma	Martin Scorsese	Robert de Niro
+Entretenimiento	¿En qué ciudad vive el mago de Oz?	La ciudad Esmeralda	La ciudad Diamante	La ciudad Dorada	La ciudad Brillante
+Entretenimiento	¿Qué actriz ha ganado el mayor número de Premios Óscar?	Katharine Hepburn	Maryl Streep	Ingrid Bergman	Frances McDormand
+Entretenimiento	¿A qué año viajan Marty y Doc en 'Regreso al futuro II'?	2015	1985	2020	1955
+Entretenimiento	¿Qué película de terror fue el debut de Johnny Depp?	Pesadilla en la Elm Street	El Resplandor	Scream	La mosca
+Entretenimiento	¿En qué película se escucha la frase "En ocasiones veo muertos"?	El Sexto Sentido	Los otros	El protegido	Split
+Entretenimiento	¿Quién dirigió 'Charada'?	Alfred Hitchcock	Stanley Kubrick	Ingmar Bergman	Billy Wilder
+Entretenimiento	¿Quién interpretó a Hermione Granger en 'Harry Potter'?	Emma Watson	Bonnie Wright	Evanna Lynch	Helena Bonham Carter
+Entretenimiento	¿En qué ciudad se ambienta 'Cazafantasmas'?	En Nueva York	En San Francisco	En Hollywood	En Seattle
+Entretenimiento	¿Qué actriz encarnó a la hermana de Elliot en 'E.T.'?	Drew Barrymore	Erika Eleniak	Dee Wallace-Stone	Mary Stein
+Entretenimiento	¿En qué año se estreno 'Eduardo Manostijeras'?	1990	1987	1994	1998
+Entretenimiento	¿Quién dirigió 'Memorias de África'?	Sydney Pollack	Anthony Mingella	Caroline Link	Steven Spielberg
+Entretenimiento	¿A qué saga pertenece el personaje de Katniss Everdeen?	Los Juegos del Hambre	Divergente	El corredor del laberinto	Crepúsculo
+Entretenimiento	¿A qué mítica actriz interpreta Ana de Armas en 'Blonde'?	Marilyn Monroe	Jayne Mansfield	Jan Sterling	Cleo Moore
+Entretenimiento	¿En qué año se estrenó 'La naranja mecánica'?	1971	1956	1977	1964
+Entretenimiento	¿Dónde se rodó 'Casablanca'?	En Estados Unidos	En Marruecos	En Francia	En Reino Unido
+Entretenimiento	¿Por qué película ganó Penélope Cruz su primer Oscar?	Vicky Cristina Barcelona	Jamón, Jamón	Volver	Vanilla Sky
+Entretenimiento	¿Quién interpretó a Miércoles Addams en la peli de los 90?	Christina Ricci	Jenna Ortega	Lisa Loring	Rachel Potter
+Entretenimiento	¿Cómo se llamaba el planeta del que venía Alf?	Melmac	Gallifrey	Namek	Krypton
+Entretenimiento	¿Cómo se llama la mujer de Shrek?	Fiona	Finea	Felicia	Flora
+Entretenimiento	En la película 'Mascotas', ¿qué clase de animales eran Max y Duke?	Perros	Gatos	Loros	Hamsters
+Entretenimiento	¿Quién interpretó a Eduardo Manostijeras?	Johnny Depp	Leonardo DiCapprio	Brad Pitt	Matt Damon
+Entretenimiento	¿Quién protagonizó la película 'Gladiator'?	Russell Crowe	Joaquin Phoenix	Richard Harris	Paul Mescal
+Entretenimiento	¿Qué actor interpreta al personaje de Thor en el Universo Cinematográfico de Marvel?	Chris Hemsworth	Liam Hemsworth	Chris Evans	Robert Downey Jr
+Entretenimiento	¿En qué país nació la actriz Margot Robbie?	Australia	Estados Unidos	Reino Unido	Nueva Zelanda
+Entretenimiento	¿De dónde es Emily Cooper, la protagonista de ‘Emily in Paris’?	De Chicago	De Los Ángeles	De Toronto	De Las Vegas
+Entretenimiento	¿Cómo se llama el personaje principal de ‘You’?	Joe Goldberg	Theo Engler	Adam Pratt	Forty Quinn
+Entretenimiento	¿Cuál fue la serie de Netflix más vista en 2020?	La Casa de Papel	Tiger King	Gambito de dama	Jugando con fuego
+Entretenimiento	¿Cuál es el parentesco de Monica y Ross en ‘Friends’?	Son hermanos	Son padre e hija	Son madre e hijo	Son primos
+Entretenimiento	¿Quién interpreta a Miércoles Addams en la serie de Netflix?	Jenna Ortega	Christina Ricci	Lisa Loring	Rachel Potter
+Entretenimiento	¿Cómo se llamaba el lobo de Jon Nieve?	Fantasma	Ventisca	Sevro	Sombra
+Entretenimiento	¿Qué título tenía Regé-Jean Page en ‘Los Bridgerton’?	Duque	Conde	Marqués	Vizconde
+Entretenimiento	¿Cuántos episodios tiene la serie ‘Gossip Girl’?	121	234	56	82
+Entretenimiento	¿Cómo se llama el protagonista de ‘Bola de Dragón’?	Goku	Luffy	Ichigo	Naruto
+Entretenimiento	¿Qué familia vive en la ciudad de Springfield?	Los Simpsons	Los Griffin	Los Smith	Los Banks
+Entretenimiento	¿Qué malvado brujo tiene un gato llamado Azrael?	Gargamel	Warlock	Jafar	Saruman
+Entretenimiento	¿De qué color es el pelo de Naruto?	Amarillo	Naranja	Gris	Negro
+Entretenimiento	¿De quiénes son amigos Pato, Elly, Pajaroto y Loula?	De Pocoyó	De Caillou	De Dora	De Martin Matin
+Entretenimiento	¿Cómo se llama la cabra que acompaña a Heidi?	Copito de Nieve	Amelio	Niebla	Bonita
+Entretenimiento	¿Quiénes crean el Club de la Canica?	Zipi y Zape	Mortadelo y Filemón	Zack y Cody	Heidi y Pedro
+Entretenimiento	¿De qué serie es popular el personaje de Michael Scofield?	Prison Break	Lost	The Walking Dead	Breaking Bad
+Entretenimiento	¿Qué actor interpretó a Pablo Escobar en la serie 'Narcos'?	Wagner Moura	Pedro Pascal	Diego Luna	Alberto Ammann
+Entretenimiento	¿A qué instituto van los personajes de ‘Élite’?	Las Encinas	Angel Guimera	El Zurbarán	7 Robles
+Entretenimiento	¿De qué serie es popular el personaje de Don Draper?	Mad Men	Los Soprano	Breaking Bad	The Wire
+Entretenimiento	¿Quién interpreta al personaje de Carrie Bradshaw en ‘Sexo en Nueva York’?	Sarah Jessica Parker	Kim Cattrall	Cynthia Nixon	Kristin Davis
+Entretenimiento	¿En qué serie española se dio a conocer la actriz Ana de Armas?	El Internado	Ana y los 7	La que se avecina	Aquí no hay quien viva
+Entretenimiento	¿En qué ciudad vive la familia Banks en ‘El Príncipe de Bel-Air’?	En Los Ángeles	En Dallas	En Miami	En Santa Cruz
+Entretenimiento	¿De qué serie es popular el personaje de Walter White?	Breaking Bad	Prison Break	Stranger Things	La casa de papel
+Entretenimiento	¿De qué serie es la popular expresión “Winter is coming"?	Juego de Tronos	Stranger Things	Lost	Narcos
+Entretenimiento	¿Cómo se llama el personaje de Úrsula Corberó en ‘La Casa de Papel’?	Tokio	Berlín	Río	Nairobi
+Entretenimiento	¿En qué serie se hicieron populares los personajes Eleven y Mike?	Stranger Things	Riverdale	Crónicas vampíricas	Supernatural
+Entretenimiento	¿Quién cantaba la sintonía de la serie ‘Los Serrano’?	Fran Perea	Despistaos	Sergio Dalma	Pignoise
+Entretenimiento	¿De qué serie es popular el personaje de Lorelai Gilmore?	Las chicas Gilmore	Gossip Girl	One Three Hill	Supernatural
+Entretenimiento	¿En qué ciudad transcurre la serie ‘La Casa de las Flores’?	Ciudad de México	Veracruz	Monterrey	Cancún
+Entretenimiento	¿En qué serie se hizo popular la actriz Elsa Pataky?	Al salir de clase	Los hombres de Paco	Física o química	El comisario
+Entretenimiento	¿Quién es el actor que interpreta a Jon Nieve en ‘Juego de Tronos’?	Kit Harington	Matt Smith	Jason Momoa	Peter Dinklage
+Entretenimiento	¿Quién interpretó a Daenerys Targaryen en la serie ‘Juego de Tronos’?	Emilia Clarke	Sophie Turner	Maisie Williams	Natalie Dormer
+Entretenimiento	¿De qué serie es popular el personaje de Jack Bauer?	24	Homeland	The Blacklist	Bones
+Entretenimiento	¿Qué instrumento toca Lisa Simpson?	El saxofón	El clarinete	El piano	La guitarra
+Entretenimiento	¿De qué serie es popular el personaje de Piper Chapman?	Orange is the New Black	Vis a vis	Poker face	Wentworth
+Entretenimiento	¿Qué actriz interpretó a Claire Underwood en la serie 'House of Cards'?	Robin Wright	Mad men	Mindhunter	Ozark
+Entretenimiento	¿Qué actor interpretó a Michael Scott en la serie 'The Office'?	Steve Carell	Rainn Wilson	John Krasinski	Ed Helms
+Entretenimiento	¿Qué actor interpretó a Tony Soprano en la serie 'Los Soprano'?	James Gandolfini	Michael Imperioli	Tony Sirico	Robert Iler
+Entretenimiento	¿Qué serie de televisión seguía a una familia adinerada en Denver?	Dinastía	Dallas	Gossip Girl	Empire
+Entretenimiento	¿En qué serie española se dio a conocer Javier Calvo?	Física o química	Los Serrano	El Internado	Élite
+Entretenimiento	¿Qué serie de televisión tenía el lema '¿Quién mató a Laura Palmer'?	Twin Peaks	True Detective	Colombo	On the air
+Entretenimiento	¿Cómo se llama el ‘spin-off’ de ‘Breaking Bad’?	Better Call Saul	Prison Break	The Walking Dead	Ozark
+Entretenimiento	¿En qué película un personaje llamado Dory ayuda a Marlin a encontrar a su hijo perdido?	Buscando a Nemo	Tarzán	El libro de la selva	Toy Story
+Entretenimiento	¿Qué actor protagonizó la trilogía original de Star Wars como Luke Skywalker?	Mark Hamill	Aiden Barton	Eric Bauza	Bob Bergen
+Entretenimiento	¿Cuál fue la película ganadora del Oscar a Mejor Película en 2020?	Parásitos	Todo a la vez en todas partes	Moonlight	Jojo Rabbit
+Entretenimiento	¿En qué película protagonizada por Robin Williams un joven utiliza un juego de mesa mágico del que sale un malvado cazador de la jungla?	Jumanji 	The Rocketeer	Toy Story	Goosebumps
+Entretenimiento	¿Qué película del Universo Cinematográfico de Marvel presenta a un grupo de superhéroes liderado por Star-Lord?	Guardianes de la Galaxia	Avengers:Endgame	Capitana Marvel	Ant-Man
+Entretenimiento	¿Qué actor ganó el Oscar a Mejor Actor en 2020?	Joaquin Phoenix	Antonio Banderas	Leonardo DiCaprio	Adam Driver
+Entretenimiento	¿Qué película de 1955 protagonizada por James Dean fue un gran éxito y se convirtió en un icono de la cultura popular?	Rebelde sin causa	Elvis	East of Eden	Gigante
+Entretenimiento	¿Cuál fue el título de la película que ganó el Oscar a Mejor Película en 1995?	Forrest Gump	Pulp Fiction	Cuatro bodas y un funeral	Quiz Show
+Entretenimiento	¿Cuál fue la película ganadora del Oscar a Mejor Película en 1972?	El Padrino	Cabaret	Defensa	Sounder
+Entretenimiento	¿Quién fue el director de la trilogía de El Señor de los Anillos?	Peter Jackson	James Cameron	Steven Spielberg	Gary Ross
+Entretenimiento	¿Qué película de 1941, dirigida y protagonizada por Orson Welles, es considerada una de las mejores películas de todos los tiempos?	Ciudadano Kane	La naranja mecánica	Casablanca	Vértigo
+Entretenimiento	¿Qué actor es conocido por su papel como Tony Stark en el Universo Cinematográfico de Marvel?	Robert Downey Jr	Chris Evans	Tom Holland	Mark Ruffalo
+Entretenimiento	¿Qué actriz española protagonizó la película "Volver" de 2006 dirigida por Pedro Almodóvar?	Penélope Cruz	Blanca Suárez	Elsa Pataky	Michelle Jenner
+Entretenimiento	¿Qué película española ganó el Oscar a Mejor Película Extranjera en 1993?	Belle Époque	Mar Adentro	El laberinto del fauno	Vicky Cristina Barcelona
+Entretenimiento	¿Cuál fue el nombre del personaje interpretado por Robert De Niro en la película Taxi Driver de 1976?	Travis Bickle	Fred Blake	Jack Byrnes	James Conway
+Entretenimiento	¿Qué actor ganó el Oscar a Mejor Actor en 1994?	Tom Hanks	Morgan Freeman	John Travolta	Paul Newman
+Entretenimiento	¿Cuántas categorías de premios existen en los premios Oscar?	23	15	21	34
+Entretenimiento	¿Qué película de 1939, protagonizada por Judy Garland, es considerada una de las mejores películas musicales de todos los tiempos?	El mago de Oz	Ha nacido una estrella	West Side Story	Grease
+Entretenimiento	¿Qué actriz ganó el Oscar a Mejor Actriz por su papel en La La Land en 2016?	Emma Stone	Natalie Portman	Meryl Streep	Ruth Negga
+Entretenimiento	¿Quién fue el director de la película La lista de Schindler de 1993?	Steven Spielberg	Roman Polanski	Quentin Trantino	Roberto Benigni
+Entretenimiento	¿Qué película de 2008, dirigida por Christopher Nolan, presenta la idea de los sueños compartidos?	Origen	Interstellar	Tenet	Insomnia
+Entretenimiento	¿Cuál fue el nombre del personaje interpretado por Tom Hanks en la película Náufrago de 2000?	Chuck Noland	Stan	Wilson	Albert Miller

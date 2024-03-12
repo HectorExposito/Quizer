@@ -67,7 +67,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5813263819292672
     m_Localized: "\rEach player has an inventory in which they can carry up to 6
-      items. Once the inventory is full, they cannot buy more items."
+      items. Once the inventory is full, they cannot buy more items.Clicking on each
+      player allows you to see their inventory at any moment."
     m_Metadata:
       m_Items: []
   - m_Id: 5813282307784704

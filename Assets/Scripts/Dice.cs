@@ -46,13 +46,16 @@ public class Dice : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (gameManager.diceThrown==false)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-            if (hit.collider != null && hit.collider.transform == this.transform)
+            if (Input.GetMouseButtonDown(0))
             {
-                gameManager.ThrowDice();
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+                if (hit.collider != null && hit.collider.transform == this.transform)
+                {
+                    gameManager.ThrowDice();
+                }
             }
         }
     }

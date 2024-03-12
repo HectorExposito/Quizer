@@ -62,7 +62,7 @@ MonoBehaviour:
   - m_Id: 5813263819292672
     m_Localized: "Cada jugador tiene un inventario en el cual puede llevar hasta
       6 objetos. Una vez que el inventario est\xE9 lleno, no podr\xE1 comprar m\xE1s
-      objetos."
+      objetos. Pulsando sobre cada jugador, se puede ver su inventario en cada momento."
     m_Metadata:
       m_Items: []
   - m_Id: 5813282307784704

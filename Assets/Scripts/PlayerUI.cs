@@ -46,28 +46,46 @@ public class PlayerUI : MonoBehaviour
             switch (itemsOnBase[i])
             {
                 case Player.Item.SPORTS:
-                    itemImages[0].SetActive(true);
-                    DoItemSavedAnimation(item1Animation);
+                    if (itemImages[0].activeSelf == false)
+                    {
+                        itemImages[0].SetActive(true);
+                        DoItemSavedAnimation(item1Animation);
+                    }
                     break;
                 case Player.Item.ART:
-                    itemImages[1].SetActive(true);
-                    DoItemSavedAnimation(item2Animation);
+                    if (itemImages[1].activeSelf == false)
+                    {
+                        itemImages[1].SetActive(true);
+                        DoItemSavedAnimation(item2Animation);
+                    }
                     break;
                 case Player.Item.HISTORY:
-                    itemImages[2].SetActive(true);
-                    DoItemSavedAnimation(item3Animation);
+                    if (itemImages[2].activeSelf == false)
+                    {
+                        itemImages[2].SetActive(true);
+                        DoItemSavedAnimation(item3Animation);
+                    }
                     break;
                 case Player.Item.ENTERTAINMENT:
-                    itemImages[3].SetActive(true);
-                    DoItemSavedAnimation(item4Animation);
+                    if (itemImages[3].activeSelf == false)
+                    {
+                        itemImages[3].SetActive(true);
+                        DoItemSavedAnimation(item4Animation);
+                    }
                     break;
                 case Player.Item.SCIENCE:
-                    itemImages[4].SetActive(true);
-                    DoItemSavedAnimation(item5Animation);
+                    if (itemImages[4].activeSelf == false)
+                    {
+                        itemImages[4].SetActive(true);
+                        DoItemSavedAnimation(item5Animation);
+                    }
                     break;
                 case Player.Item.GEOGRAPHY:
-                    itemImages[5].SetActive(true);
-                    DoItemSavedAnimation(item6Animation);
+                    if (itemImages[5].activeSelf == false)
+                    {
+                        itemImages[5].SetActive(true);
+                        DoItemSavedAnimation(item6Animation);
+                    }
                     break;
             }
         }
@@ -175,6 +193,16 @@ public class PlayerUI : MonoBehaviour
 
     IEnumerator ShowInventoryCoroutine()
     {
+        if (transform.position.y<0)
+        {
+            inventory.transform.GetComponentInParent<RectTransform>().rotation=new Quaternion(0,0,180,0);
+            inventory.transform.GetComponentInParent<RectTransform>().localPosition = new Vector3(0, -0.75f, 0);
+        }
+        else
+        {
+            inventory.transform.GetComponentInParent<RectTransform>().rotation = new Quaternion(0, 0, 0, 0);
+            inventory.transform.GetComponentInParent<RectTransform>().localPosition = new Vector3(0, 0.75f, 0);
+        }
         inventory.SetActive(true);
         yield return new WaitForSeconds(2f);
         inventory.SetActive(false);

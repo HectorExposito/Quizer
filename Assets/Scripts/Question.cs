@@ -41,7 +41,7 @@ public class Question
             case "Arte":
                 this.category = Category.ART;
                 break;
-            case "Entretenimineto":
+            case "Entretenimiento":
                 this.category = Category.ENTERTAINMENT;
                 break;
         }

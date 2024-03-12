@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region GAME_VARIABLES
-    private bool diceThrown;
+    public bool diceThrown;
     private bool actionFinished;
     private bool playerFailedQuestion;
     private bool questionForBuyingItem;
@@ -216,12 +216,12 @@ public class GameManager : MonoBehaviour
     IEnumerator Game()
     {
         int playerTurn = 0;
-        diceThrown = false;
-        actionFinished = false;
         playerFailedQuestion = false;
 
         do
         {
+            diceThrown = false;
+            actionFinished = false;
             currentPlayer = playersPlaying[playerTurn];
             playerPlayingImage.sprite = currentPlayer.GetSprite();
             while (!diceThrown)
@@ -235,8 +235,7 @@ public class GameManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.1f);
             }
-            diceThrown = false;
-            actionFinished = false;
+            
             if (playerFailedQuestion)
             {
                 if (playerTurn == playersPlaying.Length - 1)
@@ -344,6 +343,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Square.QuestionCategory.ENTERTAINMENT:
                 num = UnityEngine.Random.Range(0, questions[5].Count);
+                Debug.Log(num);
                 questionToAsk = questions[5][num];
                 //questionToAsk = questions[0][0];
                 break;
@@ -371,13 +371,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Posicion del boton " + buttonPosition + " " + positionOfCorrectAnswer);
         if (buttonPosition != positionOfCorrectAnswer)
         {
-            Debug.Log("Pregunta fallada");
             playerFailedQuestion = true;
             if (questionForBuyingItem)
             {
                 questionForBuyingItem = false;
                 canBuyItem = -1;
-                Debug.Log("Pregunta fallada comprar objeto " + playerFailedQuestion);
             }
             audioPlayer.PlayWrongAnswerMusic();
         }
@@ -679,7 +677,7 @@ public class GameManager : MonoBehaviour
     #region SHOP_METHODS
     public void Shop()
     {
-        if (currentPlayer.GetTotalMoney() >= 200)
+        if (currentPlayer.GetTotalMoney() >= 200 && currentPlayer.GetInventory().Count<6)
         {
             ShopPanel();
         }
@@ -794,7 +792,7 @@ public class GameManager : MonoBehaviour
         }
         canBuyItem = 0;
 
-        ActionFinished();
+        //ActionFinished();
     }
 
     #endregion
